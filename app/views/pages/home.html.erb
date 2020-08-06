@@ -1,2 +1,145 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% if user_signed_in? && current_user.admin == "pro"  %>
+  <%= link_to "Crear nuevo Vehículo", new_car_path%>
+  <%= link_to "Vehiculos", cars_path%>
+<% end %>
+<div class="container">
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-center" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            ¿QUE HACEMOS?
+          </button>
+        </h2>
+      </div>
+
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          Alquilamos maquinas de chopp para eventos! Como? Usted elige el barril de la marca de su preferencia. Nosotros vamos e instalamos la maquina de chopp en su domicilio. La maquina es electrica, una vez enchufado, necesita 5 minutos para comenzar a servir!
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            ¿MARCAS?
+          </button>
+        </h2>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          En stock contamos con barriles de MUNICH de 30 y 50 litros. Tambien podemos conseguir Pilsen, Brahma, Stella y Patagonia.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              ¿QUE INCLUYE EL SERVICIO?
+          </button>
+        </h2>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+          <strong>Elijiendo un barril de 30 litros <br> </strong>
+
+            * La máquina de Chopp e instalación de la misma. <br>
+            * 15 Manijas de vidro en préstamo. <br>
+            En caso de solicitar manijas extras, tiene un costo de 2.000 gs por cada manija extra. Consultar disponibilidad <br> <br>
+            <strong>IMPORTANTE</strong> <br>
+            Se cobra 30.000gs por cada manija que se pierda o se rompa. <br> <br>
+
+            <strong>Elijiendo un barril de 50 litros </strong> <br>
+
+            * La máquina de Chopp e instalación de la misma. <br>
+            * 25 Manijas de vidro en préstamo. <br>
+
+            En caso de solicitar manijas extras, tiene un costo de 2.000 gs por cada manija extra. Consultar disponibilidad <br> <br>
+            <strong>IMPORTANTE</strong> <br>
+
+            Se cobra 30.000gs por cada manija que se pierda o se rompa.
+
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingFour">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            ¿DEJAMOS BARRILES A CONSIGNACIÓN?
+          </button>
+        </h2>
+      </div>
+      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+        <div class="card-body">
+          SI ! Podemos dejar barriles de <strong>MUNICH </strong> a consignación. Es importante consultar la disponibilidad. <br>
+          Para eventos grandes, se debe de pagar por la consignación en concepto de garantia. En caso que no
+          se abran los barriles, se procede a la devolución del dinero. (ya entramos en escuelita)
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingFive">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            ¿PRECIOS?
+          </button>
+        </h2>
+      </div>
+      <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+        <div class="card-body">
+          * Munich 30 litros...................350.000 <br>
+          * Munich 50 litros...................550.000 <br>
+          * Pilsen 30 litros....................500.000 <br>
+          * Brahma 30 litros.................550.000 <br>
+          * Stella 20 litros....................600.000 <br>
+          * Patagonia 20 litros................600.000 <br>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingSix">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+            ¿DEBO PAGAR PARA RESERVAR?
+          </button>
+        </h2>
+      </div>
+      <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+        <div class="card-body">
+          Para reservar necesitamos una seña de <strong>100.000 gs </strong>, puede ser por giros o por transferencia bancaria. <br>
+          El pago del saldo debe ser realizado en el dia de la entrega para los pedidos a casas particulares. <br> <br>
+
+          <strong>Pagos para servicios en salones de eventos, casa quinta, granjas </strong> <br>
+          Se debe abonar 100 % del servicio 24 hs antes del evento. (Ya entramos en escuelita, solo por eso somos exigentes, hendy hina)
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingSeven">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+            ¿TIENE COSTO DE DELIVERY?
+          </button>
+        </h2>
+      </div>
+      <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+        <div class="card-body">
+          Para <strong>Asunción</strong> el delivery no tiene costo. Pero también llegamos a Lambare, Villa Elisa, San Lorenzo, Luque y solo tiene costo si es muy lejos. <br>
+          Para salir de la duda, puede enviarnos la ubicación al whatsapp, así le confirmamos si seria con costo el delivery.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-white  "></div>
+<div class="footer">
+  <%= link_to "https://api.whatsapp.com/send?phone=595994808080&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20MegaChopp" do %>
+    <%=cl_image_tag("whatsapp_sgel70", height: 45, width: 45, crop: :fill, class: "whatsapp")%>
+  <% end %>
+  <%= link_to "tel:0994808080", class: "footer-inside" do  %>
+  <div> <%=cl_image_tag("phone_amfyy8", height: 15, width: 15, crop: :fill)%> - LLamar </div>
+  <% end %>
+</div>

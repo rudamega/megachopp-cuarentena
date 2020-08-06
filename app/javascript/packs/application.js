@@ -7,6 +7,10 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+import { toolTips } from 'components/tooltips'
+import { previewImageOnFileSelect } from '../components/photo_preview';
+
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -31,4 +35,6 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  toolTips();
+  previewImageOnFileSelect();
 });
