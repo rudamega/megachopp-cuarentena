@@ -1,4 +1,19 @@
 
 .modal-img{
   padding: 20px;
+  width: 100%;
+  height: 100%;
 };
+
+.modal-content{
+  background: none;
+  border: none;
+};
+
+
+@media (min-height: 768px) {
+  .modal-img{
+  width: 350px;
+  height: 400px;
+};
+}
