@@ -1,3 +1,15 @@
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div><%=cl_image_tag("promo_g0upjz", height: 600, width: 600, crop: :fill)%></div>
+    </div>
+  </div>
+</div>
+
+
 <% if user_signed_in? && current_user.admin == "pro"  %>
   <%= link_to "Crear nuevo Vehículo", new_car_path%>
   <%= link_to "Vehiculos", cars_path%>
@@ -143,3 +155,4 @@
   <div> <%=cl_image_tag("phone_amfyy8", height: 15, width: 15, crop: :fill)%> - LLamar </div>
   <% end %>
 </div>
+

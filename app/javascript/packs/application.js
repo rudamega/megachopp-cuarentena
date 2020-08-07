@@ -8,6 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 import { toolTips } from 'components/tooltips'
+import { modal } from 'components/modal'
 import { previewImageOnFileSelect } from '../components/photo_preview';
 
 
@@ -37,4 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   toolTips();
   previewImageOnFileSelect();
+  modal();
 });
