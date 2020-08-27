@@ -1,0 +1,31 @@
+<div class="container">
+  <table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Stock</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Costo</th>
+      <th scope="col">Venta</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+    <tr>
+      <th scope="row"><%=item.stock%></th>
+      <td><%=item.name%></td>
+      <td><%=item.cost_price%></td>
+      <td><%=item.sales_prices%></td>
+      <td class="text-center">
+      <%= link_to "#" do %>
+      Ver
+      <% end %>
+      <%= link_to "#" do %>
+      Editar
+      <% end %>
+    </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
