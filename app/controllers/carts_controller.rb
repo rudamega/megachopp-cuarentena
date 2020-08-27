@@ -32,14 +32,6 @@ class CartsController < ApplicationController
     redirect_to pages_path
   end
 
-  def cart_vaciar
-    @cart = Cart.find(params[:cart_id])
-    added = "added"
-    @cart_items = CartItem.where("cart_id = ? AND status = ?", @cart.id, added)
-    @cart_items.destroy_all
-    redirect_to cart_path(@cart.id)
-  end
-
   def create
     if Cart.where("user_id = ?", current_user.id).last.nil?
       @cart = Cart.new(user_id: current_user.id)
