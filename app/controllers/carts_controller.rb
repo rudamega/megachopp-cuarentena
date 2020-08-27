@@ -8,7 +8,7 @@ class CartsController < ApplicationController
     @cart_item = CartItem.new
     @items = Item.all
     added = "added"
-    @cart_item_cart = CartItem.where("cart_id = ? AND status = ?", @cart.id, added)
+    @cart_item_cart = CartItem.where("cart_id = ? AND status = ?", @cart.id, added).order(created_at: :asc)
   end
 
   def new
