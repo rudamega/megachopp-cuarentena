@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(items_params)
-    redirect_to 'index' if @item.save
+    redirect_to items_path if @item.save
   end
 
   def edit

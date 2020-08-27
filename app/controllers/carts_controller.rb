@@ -26,6 +26,8 @@ class CartsController < ApplicationController
       end
       @cart.status = "closed"
       @cart.save
+      redirect_to edit_cart_path(@cart)
+      return
     end
     redirect_to pages_path
   end
@@ -34,9 +36,7 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:cart_id])
     added = "added"
     @cart_items = CartItem.where("cart_id = ? AND status = ?", @cart.id, added)
-    @cart_items.each do |item|
-      item.destroy
-    end
+    @cart_items.destroy_all
     redirect_to cart_path(@cart.id)
   end
 
@@ -56,6 +56,7 @@ class CartsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
