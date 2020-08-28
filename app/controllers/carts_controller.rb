@@ -7,29 +7,15 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
     @cart_item = CartItem.new
     @items = Item.all
-    added = "added"
-    @cart_item_cart = CartItem.where("cart_id = ? AND status = ?", @cart.id, added).order(created_at: :asc)
+    @cart_item_cart = CartItem.where("cart_id = ?", @cart.id).order(created_at: :asc)
+  end
+
+  def mostrar
+    @cart = Cart.find(params[:id])
   end
 
   def new
     @cart = Cart.new
-  end
-
-  def cart_confirmado
-    @cart = Cart.find(params[:cart_id])
-    added = "added"
-    @cart_items = CartItem.where("cart_id = ? AND status = ?", @cart.id, added)
-    unless @cart_items.empty?
-      @cart_items.each do |item|
-        item.status = "confirmed"
-        item.save
-      end
-      @cart.status = "closed"
-      @cart.save
-      redirect_to edit_cart_path(@cart)
-      return
-    end
-    redirect_to pages_path
   end
 
   def create
@@ -47,13 +33,39 @@ class CartsController < ApplicationController
     end
   end
 
-  def edit
+  def cart_confirmado
+    @cart = Cart.find(params[:cart_id])
+    added = "added"
+    @cart_items = CartItem.where("cart_id = ? AND status = ?", @cart.id, added)
+    unless @cart_items.empty?
+      @cart_items.each do |item|
+        item.status = "confirmed"
+        item.save
+      end
+      @cart.status = "confirmed"
+      @cart.save
+      redirect_to edit_cart_path(@cart)
+      return
+    end
+    redirect_to pages_path
+  end
 
+  def edit
+    @cart = Cart.find(params[:id])
   end
 
   def update
+    @cart = Cart.find(params[:id])
+    @cart.update(carts_params)
+    redirect_to carts_path
   end
 
   def destroy
+  end
+
+  private
+
+  def carts_params
+    params.require(:cart).permit(:date)
   end
 end
