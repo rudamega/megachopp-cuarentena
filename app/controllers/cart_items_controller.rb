@@ -4,7 +4,7 @@ class CartItemsController < ApplicationController
     @cart_item.item_id = params[:cart_item][:item_id]
     @cart_item.cart_id = params[:cart_id]
     @cart_item.status = "added"
-    @cart_item.quantity = params[:cart_item][:quantity]
+    @cart_item.quantity = 1
     @cart_item.price = params[:cart_item][:price]
     @cart_item.save!
     #redirect_to cart_path(@cart_item.cart_id)
