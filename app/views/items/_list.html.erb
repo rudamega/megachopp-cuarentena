@@ -4,8 +4,7 @@
     <tr>
       <th scope="col">Stock</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Cantidad</th>
-      <th scope="col">Agregar</th>
+      <th scope="col">Accion</th>
     </tr>
   </thead>
   <tbody>
@@ -15,9 +14,8 @@
         <%= t.input :item_id, input_html: {value: item.id}, as: :hidden%>
         <%= t.input :price, input_html: {value: item.sales_prices}, as: :hidden%>
         <th scope="row"><%=item.stock%></th>
-        <td><%=item.id%></td>
-        <td><%= t.input :quantity, collection: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]%></td>
-        <td><%= t.submit "Add", class: "btn btn-outline-success", remote: true%></td>
+        <td><%=item.name%></td>
+        <td><%= t.submit "Agregar", class: "btn btn-outline-success", remote: true%></td>
     </tr>
       <% end %>
     </div>
