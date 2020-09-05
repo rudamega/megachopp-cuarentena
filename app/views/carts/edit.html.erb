@@ -1,7 +1,7 @@
 
   <h3 class="text-center"> Editar</h3>
     <%= simple_form_for(@cart) do |t| %>
-      <%= t.input :date, label: 'Fecha de evento'%>
+      <%= t.input :date, as: :string, input_html: { id: 'fecha' }, label: 'Fecha de evento'%>
       <%= t.submit "Modificar"%>
     <% end %>
     <%= link_to 'Atras', :back, class: "btn btn-outline-secondary" %>
