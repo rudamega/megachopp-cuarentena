@@ -3,7 +3,7 @@ const autocomplete = () => {
 if (document.getElementById('select2')) {
 const id = document.getElementById('select2').value;
 
-fetch(`http://localhost:3000/api/v1/users/${id}`)
+fetch(`http://www.megachopp.com.py/api/v1/users/${id}`)
   .then(response => response.json())
   .then((data) => {
     const cliente = document.getElementById('cliente');
