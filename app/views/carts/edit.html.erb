@@ -1,7 +1,23 @@
 
   <h3 class="text-center"> Editar</h3>
-    <%= simple_form_for(@cart) do |t| %>
-      <%= t.input :date, as: :string, input_html: { id: 'fecha' }, label: 'Fecha de evento'%>
-      <%= t.submit "Modificar"%>
-    <% end %>
+    <div class="container">
+      <div style="width: 80%">
+        <%= simple_form_for(@cart) do |t| %>
+          <%= t.input :date, as: :string, input_html: { id: 'fecha' }, label: 'Fecha de evento'%>
+          <%= t.input :razon_social, collection: User.all, label_method: :first_name, value_method: :id, input_html: { id: 'select2' }%>
+          <%= t.input :cliente, input_html: { id: 'cliente' }%>
+          <%= t.input :ruc, input_html: { id: 'ruc' }%>
+          <%= t.input :email, input_html: { id: 'email' }%>
+          <%= t.input :tel, input_html: { id: 'tel' } %>
+          <%= t.input :lugar, input_html: { id: 'lugar' }%>
+          <%= t.input :obs%>
+          <%= t.input :sena, label: "Seña"%>
+          <%= t.input :latitud, input_html: { id: 'latitud' }%>
+          <%= t.input :longitud, input_html: { id: 'longitud' }%>
+          <div class="text-center">
+          <%= t.submit "Guardar" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
     <%= link_to 'Atras', :back, class: "btn btn-outline-secondary" %>

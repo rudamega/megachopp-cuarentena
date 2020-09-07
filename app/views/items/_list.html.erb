@@ -15,7 +15,7 @@
         <%= t.input :price, input_html: {value: item.sales_prices}, as: :hidden%>
         <th scope="row"><%=item.stock%></th>
         <td><%=item.name%></td>
-        <td><%= t.submit "Agregar", class: "btn btn-outline-success", remote: true%></td>
+        <td><%= t.submit "Agregar", class: "btn btn-outline-success"%></td>
     </tr>
       <% end %>
     </div>

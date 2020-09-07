@@ -15,6 +15,12 @@ import flatpickr from "flatpickr"
 import { Spanish } from "flatpickr/dist/l10n/es.js"
 require('flatpickr/dist/flatpickr.css')
 
+import { initSelect2 } from 'components/init_select2';
+import { autocomplete } from 'components/autocomplete';
+
+// [...]
+
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -41,6 +47,8 @@ document.addEventListener('turbolinks:load', () => {
   toolTips();
   previewImageOnFileSelect();
   modal();
+  autocomplete();
+  initSelect2();
   flatpickr("#fecha",
     {
       "locale": Spanish,
