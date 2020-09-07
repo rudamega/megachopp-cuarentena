@@ -52,6 +52,7 @@ class CartsController < ApplicationController
 
   def edit
     @cart = Cart.find(params[:id])
+    @users = User.all
   end
 
   def update

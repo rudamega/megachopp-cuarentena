@@ -27,6 +27,8 @@ gem 'capistrano-rails-console', require: false
 gem 'cloudinary', '~> 1.12.0'
 gem 'letter_opener', group: :development
 gem 'roo', '~> 2.8', '>= 2.8.3'
+gem "select2-rails"
+gem 'pundit'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

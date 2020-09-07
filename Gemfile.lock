@@ -171,6 +171,8 @@ GEM
     public_suffix (4.0.5)
     puma (4.3.5)
       nio4r (~> 2.0)
+    pundit (2.1.0)
+      activesupport (>= 3.0.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -230,6 +232,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    select2-rails (4.0.13)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -309,10 +312,12 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma (~> 4.1)
+  pundit
   rails (~> 6.0.3, >= 6.0.3.2)
   redis (~> 4.0)
   roo (~> 2.8, >= 2.8.3)
   sass-rails (>= 6)
+  select2-rails
   selenium-webdriver
   simple_form
   spring

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_224948) do
+ActiveRecord::Schema.define(version: 2020_09_06_183610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,17 @@ ActiveRecord::Schema.define(version: 2020_08_27_224948) do
     t.bigint "user_id", null: false
     t.string "status", default: "open"
     t.date "date"
+    t.string "cliente"
+    t.string "razon_social"
+    t.string "ruc"
+    t.string "email"
+    t.string "tel"
+    t.string "lugar"
+    t.string "obs"
+    t.string "sena"
+    t.string "latitud"
+    t.string "longitud"
+    t.string "factura"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
