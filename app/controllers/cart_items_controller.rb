@@ -11,6 +11,28 @@ class CartItemsController < ApplicationController
     redirect_to cart_path(params[:cart_id])
   end
 
+  def cart_consi
+    @cart_item = CartItem.new
+    @cart_item.item_id = params[:id]
+    @cart_item.cart_id = params[:cart_id]
+    @cart_item.status = "consignacion"
+    @cart_item.quantity = 1
+    @cart_item.price = Item.find(params[:id]).sales_prices
+    @cart_item.save!
+    redirect_to cart_path(params[:cart_id])
+  end
+
+  def cart_add
+    @cart_item = CartItem.new
+    @cart_item.item_id = params[:id]
+    @cart_item.cart_id = params[:cart_id]
+    @cart_item.status = "added"
+    @cart_item.quantity = 1
+    @cart_item.price = Item.find(params[:id]).sales_prices
+    @cart_item.save!
+    redirect_to cart_path(params[:cart_id])
+  end
+
   def edit
     @item = CartItem.find(params[:id])
   end

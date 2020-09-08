@@ -6,10 +6,6 @@
   </div>
 </div>
 
-<% if user_signed_in? && current_user.admin == "admin"  %>
-  <%= link_to "Crear nuevo Vehículo", new_car_path%>
-  <%= link_to "Vehiculos", cars_path%>
-<% end %>
 <div class="container">
   <div class="accordion" id="accordionExample">
     <div class="card">
