@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :new, :create]
     get 'cart_confirmado', to: 'carts#cart_confirmado'
     get 'cart_vaciar', to: 'carts#cart_vaciar'
+    get 'cart_consi/:id', to: 'cart_items#cart_consi', as: :consig
+    get 'cart_add/:id', to: 'cart_items#cart_add', as: :add
   end
     get 'cart_mostrar', to: 'carts#mostrar'
   resources :cart_items, only: [:destroy, :edit, :update]

@@ -6,6 +6,7 @@ class CartsController < ApplicationController
   def show
     @cart = Cart.find(params[:id])
     @cart_item = CartItem.new
+    @cart_cart_consi = CartItem.new
     @items = Item.all
     @cart_item_cart = CartItem.where("cart_id = ?", @cart.id).order(created_at: :asc)
   end
@@ -39,7 +40,7 @@ class CartsController < ApplicationController
     @cart_items = CartItem.where("cart_id = ? AND status = ?", @cart.id, added)
     unless @cart_items.empty?
       @cart_items.each do |item|
-        item.status = "confirmed"
+        item.status = "added"
         item.save
       end
       @cart.status = "confirmed"

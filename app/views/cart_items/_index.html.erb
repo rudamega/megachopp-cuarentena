@@ -9,7 +9,36 @@
     </tr>
   </thead>
   <tbody>
-    <%@cart_item_cart.each do |item| %>
+    <%@cart_item_cart.where(status: "added").each do |item| %>
+    <tr>
+      <td><%= item.quantity %></td>
+      <td><%= item.item.name %></td>
+      <td><%= number_with_delimiter(item.price, :delimiter => '.') %></td>
+      <td>
+        <%=link_to edit_cart_item_path(item) do %>
+        Editar
+        <% end %>
+        <%=link_to cart_item_path(item), method: :delete do %>
+        Eliminar
+        <% end %>
+
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<h1 class="text-center">Consignacion</h1>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Producto</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@cart_item_cart.where(status: "consignacion").each do |item| %>
     <tr>
       <td><%= item.quantity %></td>
       <td><%= item.item.name %></td>
