@@ -15,7 +15,7 @@ fetch(`http://www.megachopp.com.py/api/v1/users/${id}`)
     const latitud = document.getElementById('latitud');
     const longitud = document.getElementById('longitud');
     cliente.value = data['first_name']
-    cliente.razon_social = data['razon_social']
+    razon_social.value = data['razon_social']
     ruc.value = data['ruc']
     email.value = data['email']
     tel.value = data['phone_number']
