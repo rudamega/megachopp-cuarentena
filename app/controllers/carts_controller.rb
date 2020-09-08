@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   def index
-    @carts = Cart.all
+    @carts = Cart.all.order(date: :asc)
   end
 
   def show
@@ -59,7 +59,10 @@ class CartsController < ApplicationController
   def update
     @cart = Cart.find(params[:id])
     @cart.update(carts_params)
-    redirect_to carts_path
+    if carts_params[:razon_social] != ""
+      @cart.razon_social = User.find(carts_params[:razon_social]).razon_social
+    end
+    redirect_to carts_path if @cart.save
   end
 
   def destroy
@@ -68,6 +71,6 @@ class CartsController < ApplicationController
   private
 
   def carts_params
-    params.require(:cart).permit(:date)
+    params.require(:cart).permit(:date, :email, :tel, :latitud, :longitud, :ruc, :cliente, :razon_social)
   end
 end

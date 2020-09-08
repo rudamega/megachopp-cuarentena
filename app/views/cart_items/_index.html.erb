@@ -18,7 +18,7 @@
         <%=link_to edit_cart_item_path(item) do %>
         Editar
         <% end %>
-        <%=link_to cart_item_path(item), method: :delete do %>
+        <%=link_to cart_item_path(item),remote: true, method: :delete do %>
         Eliminar
         <% end %>
 
@@ -47,7 +47,7 @@
         <%=link_to edit_cart_item_path(item) do %>
         Editar
         <% end %>
-        <%=link_to cart_item_path(item), method: :delete do %>
+        <%=link_to cart_item_path(item),remote: true, method: :delete do %>
         Eliminar
         <% end %>
 

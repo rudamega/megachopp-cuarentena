@@ -4,7 +4,13 @@
       <div style="width: 80%">
         <%= simple_form_for(@cart) do |t| %>
           <%= t.input :date, as: :string, input_html: { id: 'fecha' }, label: 'Fecha de evento'%>
-          <%= t.input :razon_social, collection: User.all, label_method: :first_name, value_method: :id, input_html: { id: 'select2' }%>
+          <h3>Cliente</h3>
+          <select id="select2" name="state">
+            <%= User.all.each do |user| %>
+            <option value=<%= "#{user.id}" %>><%= user.razon_social%></option>
+            <% end %>
+          </select>
+          <%= t.input :razon_social, input_html: { id: 'razon_social'}%>
           <%= t.input :cliente, input_html: { id: 'cliente' }%>
           <%= t.input :ruc, input_html: { id: 'ruc' }%>
           <%= t.input :email, input_html: { id: 'email' }%>
