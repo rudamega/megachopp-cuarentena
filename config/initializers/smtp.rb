@@ -1,7 +1,7 @@
 ActionMailer::Base.smtp_settings = {
-  address: "mail.hotelmegal.com.py",
+  address: "server1.asunhost.com",
   port: 465,
-  domain: 'hotelmegal.com.py',
+  domain: 'megachopp.com.py',
   #user_name: "comercial@megachopp.com.py",
   user_name: ENV['MAIL_ADDRESS'],
   #password: "Comercial156742",

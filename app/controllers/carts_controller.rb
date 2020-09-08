@@ -58,11 +58,11 @@ class CartsController < ApplicationController
 
   def update
     @cart = Cart.find(params[:id])
-    @cart.update(carts_params)
-    if carts_params[:razon_social] != ""
-      @cart.razon_social = User.find(carts_params[:razon_social]).razon_social
+    if @cart.update(carts_params)
+      mail = UserMailer.with(cart: @cart).welcome
+      mail.deliver_now
+      redirect_to carts_path
     end
-    redirect_to carts_path if @cart.save
   end
 
   def destroy
