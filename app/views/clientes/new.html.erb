@@ -1,0 +1,25 @@
+<h2 class="text-center">Ficha de Clientes</h2>
+<div class="text-center m-2">
+  <button type="button" class="btn btn-outline-secondary mb-3" data-toggle="tooltip" data-placement="bottom" title="Si usted esta haciendo reserva para otra persona, igual complete con sus propios datos. Ya que dentro del sistema podra especificar para quien es el pedido y cuales son los datos de la persona.">
+  <h6> Favor clicar aqui para leer si hace pedido para otra persona</h6>
+  </button>
+</div>
+<div class="container">
+  <%= simple_form_for(@cliente) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :name, label: "Nombre (encargado)", required: true%>
+      <%= f.input :razon_social, label: "Razon Social", required: true%>
+      <%= f.input :ruc, label: "Ci o Ruc", required: true%>
+      <%= f.input :tel, label: "Nro de telefono", required: true%>
+      <%= f.input :email, label:" Correo",
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+    </div>
+    <div class="form-actions text-center">
+      <%= f.button :submit, "Registrase", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+

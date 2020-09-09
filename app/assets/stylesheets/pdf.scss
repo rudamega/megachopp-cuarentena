@@ -1,0 +1,35 @@
+h1 {
+  color: green;
+}
+#titulo {
+  font-size: 100px;
+}
+
+.detalle {
+  padding: 20px;
+  width: 380px;
+}
+
+.pedido {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 0px 0px 10px 0px;
+}
+
+.flexrow {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.flexrow > div {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  margin-right: 10%;
+}
+.flexrow > div:last-child {
+  margin-right: 0;
+}
+* {
+  -webkit-box-sizing: border-box;
+}
