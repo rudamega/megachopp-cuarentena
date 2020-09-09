@@ -13,19 +13,20 @@
               <th scope="col">Productos</th>
               <th scope="col">Consignacion</th>
               <th scope="col">Telefono</th>
-              <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
             <%@carts.each do |carts|%>
             <tr>
-              <th scope="row" class="lista"><%= carts.date %></th>
+              <th scope="row" class="lista">
+                <%= link_to "#{carts.date}", mostrar_path(carts) %>
+                </th>
                 <td><%= carts.cliente %></td>
                 <td><%= carts.razon_social%></td>
                 <td>
                   <ul>
                   <%carts.cart_items.where(status: "added").each do |items|%>
-                    <li class="lista"> <%= items.quantity %> x <%= items.item.description %></li>
+                    <li class="lista"><%= items.quantity %> <%= items.item.description%> </li>
                   <% end %>
                   </ul>
                 </td>
@@ -37,9 +38,6 @@
                   </ul>
                 </td>
                 <td><%= carts.tel %></td>
-                <td>Acciones</td>
-                <td></td>
-                <td></td>
             </tr>
             <% end %>
           </tbody>

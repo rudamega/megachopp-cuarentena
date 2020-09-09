@@ -16,7 +16,6 @@ import { Spanish } from "flatpickr/dist/l10n/es.js"
 require('flatpickr/dist/flatpickr.css')
 
 import { initSelect2 } from 'components/init_select2';
-import { autocomplete } from 'components/autocomplete';
 
 // [...]
 
@@ -47,7 +46,6 @@ document.addEventListener('turbolinks:load', () => {
   toolTips();
   previewImageOnFileSelect();
   modal();
-  autocomplete();
   initSelect2();
   flatpickr("#fecha",
     {

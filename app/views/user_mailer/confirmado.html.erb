@@ -1,0 +1,21 @@
+
+<h1>Nos complace informale que su pedido ha sido confirmado</h1>
+
+Serivicio solicitado por : <%= @cart.cliente %> <br><br>
+Fecha del servicio: <%= @cart.date %> <br> <br>
+Razon social: <%= @cart.razon_social%> <br> <br>
+Ruc: <%= @cart.ruc%> <br><br>
+Tel: <%= @cart.tel%> <br> <br>
+
+<h2>Pedido</h2>
+<ul>
+  <%@cart.cart_items.where(status: "added").each do |items|%>
+  <li><%= items.quantity %> x <%= items.item.description %></li>
+<% end %>
+</ul>
+<h2>Consignacion</h2>
+<ul>
+  <%@cart.cart_items.where(status: "consignacion").each do |items|%>
+    <li><%= items.quantity %> x <%= items.item.description %></li>
+  <% end %>
+</ul>

@@ -13,6 +13,13 @@ class CartsController < ApplicationController
 
   def mostrar
     @cart = Cart.find(params[:id])
+    @lugar = @cart.lugar
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render template: 'carts/pdf', pdf: "#{@cart.cliente}" # Excluding ".pdf" extension.
+      end
+    end
   end
 
   def new
@@ -59,7 +66,7 @@ class CartsController < ApplicationController
   def update
     @cart = Cart.find(params[:id])
     if @cart.update(carts_params)
-      mail = UserMailer.with(cart: @cart).welcome
+      mail = UserMailer.with(cart: @cart).confirmado
       mail.deliver_now
       redirect_to carts_path
     end
@@ -71,6 +78,6 @@ class CartsController < ApplicationController
   private
 
   def carts_params
-    params.require(:cart).permit(:date, :email, :tel, :latitud, :longitud, :ruc, :cliente, :razon_social)
+    params.require(:cart).permit(:date, :email, :tel, :latitud, :longitud, :ruc, :cliente, :razon_social, :lugar)
   end
 end

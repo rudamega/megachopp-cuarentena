@@ -30,6 +30,8 @@ gem 'roo', '~> 2.8', '>= 2.8.3'
 gem "select2-rails"
 gem 'pundit'
 gem 'rack-cors'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
