@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :pages
   resources :items
+  get 'cart_mostrar/:id', to: 'carts#mostrar', as: :mostrar
   resources :carts do
     resources :cart_items, only: [:index, :new, :create]
     get 'cart_confirmado', to: 'carts#cart_confirmado'

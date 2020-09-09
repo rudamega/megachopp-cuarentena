@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  respond_to :pdf
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -8,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :ruc, :phone_number, :data, :razon_social])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :ruc, :phone_number, :data, :lugar, :latitud, :longitud, :razon_social])
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])

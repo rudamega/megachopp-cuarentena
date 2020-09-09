@@ -1,0 +1,23 @@
+<div class="container">
+
+<h2>Pedido</h2>
+<ul>
+  <%@cart.cart_items.where(status: "added").each do |items|%>
+  <li><%= items.quantity %> x <%= items.item.description %></li>
+<% end %>
+</ul>
+<h2>Consignacion</h2>
+<ul>
+  <%@cart.cart_items.where(status: "consignacion").each do |items|%>
+    <li><%= items.quantity %> x <%= items.item.description %></li>
+  <% end %>
+</ul>
+ Serivicio solicitado por : <%= @cart.cliente %> <br><br>
+Fecha del servicio: <%= @cart.date %> <br> <br>
+Razon social: <%= @cart.razon_social%> <br> <br>
+Ruc: <%= @cart.ruc%> <br><br>
+Tel: <%= @cart.tel%> <br> <br>
+<div class="osb">Obs: <%= @cart.obs%> <br> <br></div>
+<a class="btn btn-success"> Entregar</a>
+<%= link_to "GOOGLE", "http://#{@cart.lugar}", target: :_blank %>
+</div>

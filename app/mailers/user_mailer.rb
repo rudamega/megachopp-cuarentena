@@ -9,4 +9,12 @@ class UserMailer < ApplicationMailer
     @cart = params[:cart]
     mail to: "ruben@megachopp.com.py"
   end
+
+  def confirmado
+    @cart = params[:cart]
+    mail(
+      to: @cart.email,
+      subject: "PEDIDO DEL #{@cart.date} CONFIRMADO"
+    )
+  end
 end
