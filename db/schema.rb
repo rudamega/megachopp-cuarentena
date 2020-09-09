@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_203250) do
+ActiveRecord::Schema.define(version: 2020_09_09_141301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(version: 2020_09_08_203250) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "clientes", force: :cascade do |t|
+    t.string "name"
+    t.string "razon_social"
+    t.string "tel"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "ruc"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -76,6 +86,17 @@ ActiveRecord::Schema.define(version: 2020_09_08_203250) do
     t.integer "stock", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ubicacions", force: :cascade do |t|
+    t.string "name"
+    t.string "latitud"
+    t.string "longitud"
+    t.string "obs"
+    t.bigint "cliente_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cliente_id"], name: "index_ubicacions_on_cliente_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,4 +125,5 @@ ActiveRecord::Schema.define(version: 2020_09_08_203250) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "items"
   add_foreign_key "carts", "users"
+  add_foreign_key "ubicacions", "clientes"
 end

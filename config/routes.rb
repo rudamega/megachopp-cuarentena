@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   resources :pages
   resources :items
   get 'cart_mostrar/:id', to: 'carts#mostrar', as: :mostrar
+
+  resources :clientes do
+    resources :ubicacions
+  end
+
   resources :carts do
     resources :cart_items, only: [:index, :new, :create]
     get 'cart_confirmado', to: 'carts#cart_confirmado'

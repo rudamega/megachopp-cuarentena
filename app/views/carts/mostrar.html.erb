@@ -1,23 +1,32 @@
-<div class="container">
+<div class="detalle">
+  <div class="pedido text-center">
+    <h2>Pedido</h2>
 
-<h2>Pedido</h2>
-<ul>
-  <%@cart.cart_items.where(status: "added").each do |items|%>
-  <li><%= items.quantity %> x <%= items.item.description %></li>
-<% end %>
-</ul>
-<h2>Consignacion</h2>
-<ul>
-  <%@cart.cart_items.where(status: "consignacion").each do |items|%>
-    <li><%= items.quantity %> x <%= items.item.description %></li>
-  <% end %>
-</ul>
- Serivicio solicitado por : <%= @cart.cliente %> <br><br>
-Fecha del servicio: <%= @cart.date %> <br> <br>
-Razon social: <%= @cart.razon_social%> <br> <br>
-Ruc: <%= @cart.ruc%> <br><br>
-Tel: <%= @cart.tel%> <br> <br>
-<div class="osb">Obs: <%= @cart.obs%> <br> <br></div>
-<a class="btn btn-success"> Entregar</a>
-<%= link_to "GOOGLE", "http://#{@cart.lugar}", target: :_blank %>
+      <%@cart.cart_items.where(status: "added").each do |items|%>
+      <h6><%= items.quantity %> x <%= items.item.description %></h6>
+    <% end %>
+  </div>
+  <div class="pedido text-center">
+      <div class="encabezado">
+       <h6>Cant    Descripcion    Precio   Total</h6>
+      </div>
+  <div class="pedido text-center">
+    <h2>Consignacion</h2>
+
+      <%@cart.cart_items.where(status: "consignacion").each do |items|%>
+        <h6><%= items.quantity %> x <%= items.item.description %> <%= items.item.price%></h6>
+      <% end %>
+  </div>
+  <div class="pedido">
+   Serivicio solicitado por : <%= @cart.cliente %> <br><br>
+  Fecha del servicio: <%= @cart.date %> <br> <br>
+  Razon social: <%= @cart.razon_social%> <br> <br>
+  Ruc: <%= @cart.ruc%> <br><br>
+  Tel: <%= @cart.tel%> <br> <br>
+  <div class="osb">Obs: <%= @cart.obs%> <br> <br></div>
+  <div class="text-center">
+    <%=link_to "Editar", cart_path(@cart), class: ("btn btn-primary")%>
+    <%= link_to "GOOGLE", "http://#{@cart.lugar}", target: :_blank %>
+  </div>
+</div>
 </div>

@@ -1,0 +1,2 @@
+class UbicacionsController < ApplicationController
+end

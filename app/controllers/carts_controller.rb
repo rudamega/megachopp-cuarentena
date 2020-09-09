@@ -1,6 +1,12 @@
 class CartsController < ApplicationController
   def index
     @carts = Cart.all.order(date: :asc)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render template: 'carts/lista', pdf: "Lista de pedidos" # Excluding ".pdf" extension.
+      end
+    end
   end
 
   def show
@@ -28,11 +34,11 @@ class CartsController < ApplicationController
 
   def create
     if Cart.where("user_id = ?", current_user.id).last.nil?
-      @cart = Cart.new(user_id: current_user.id)
+      @cart = Cart.new(user_id: current_user.id, date: "")
       redirect_to cart_path(@cart.id) if @cart.save
     else
       if Cart.where("user_id = ?", current_user.id).last.status != "open"
-        @cart = Cart.new(user_id: current_user.id)
+        @cart = Cart.new(user_id: current_user.id, date: "")
         redirect_to cart_path(@cart.id) if @cart.save
       else
         redirect_to cart_path(Cart.where('user_id = ?', current_user.id).last.id)

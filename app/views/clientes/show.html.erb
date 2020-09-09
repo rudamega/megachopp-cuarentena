@@ -1,0 +1,12 @@
+<div class="detalle">
+  <div class="pedido">
+  Nombre o Encargado : <%= @cliente.name %> <br><br>
+  Razon social: <%= @cliente.razon_social%> <br> <br>
+  Ruc: <%= @cliente.ruc%> <br><br>
+  Tel: <%= @cliente.tel%> <br> <br>
+  <div class="text-center">
+    <%=link_to "Editar", edit_cliente_path(@cliente), class: ("btn btn-primary")%>
+    <%= link_to "GOOGLE", "http://", target: :_blank %>
+  </div>
+</div>
+</div>
