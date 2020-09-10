@@ -32,6 +32,8 @@ gem 'pundit'
 gem 'rack-cors'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'simple_token_authentication'
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

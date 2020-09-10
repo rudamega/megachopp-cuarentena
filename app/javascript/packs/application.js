@@ -17,6 +17,7 @@ require('flatpickr/dist/flatpickr.css')
 
 import { initSelect2 } from 'components/init_select2';
 import { initSelect3 } from 'components/init_select3';
+import { ubicacionRender } from 'components/ubicacion_render';
 
 // [...]
 
@@ -49,6 +50,7 @@ document.addEventListener('turbolinks:load', () => {
   modal();
   initSelect2();
   initSelect3();
+  ubicacionRender();
   flatpickr("#fecha",
     {
       "locale": Spanish,

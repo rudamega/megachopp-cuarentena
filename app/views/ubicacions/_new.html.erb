@@ -1,0 +1,17 @@
+<h2 class="text-center">Nueva Ubi</h2>
+<div class="container">
+  <%= simple_form_for [@cliente, @ubicacion] do |f| %>
+    <div class="form-inputs">
+      <%= f.input :name, placeholder: "Ej: Mi casa, casa abuela", required: true%>
+      <%= f.input :latitud, required: true%>
+      <%= f.input :longitud, required: true%>
+      <%= f.input :ciudad, required: true%>
+      <%= f.input :zona%>
+      <%= f.input :obs, placeholder: "Ej: Casa verde, muralla roja"%>
+    </div>
+    <div class="form-actions text-center">
+      <%= f.button :submit, "Guardar", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
