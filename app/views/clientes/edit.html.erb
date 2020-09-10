@@ -8,13 +8,10 @@
       <%= f.input :razon_social, label: "Razon Social", required: true%>
       <%= f.input :ruc, label: "Ci o Ruc", required: true%>
       <%= f.input :tel, label: "Nro de telefono", required: true%>
-      <%= f.input :email, label:" Correo",
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "email" }%>
+      <%= f.input :email, label:" Correo"%>
     </div>
     <div class="form-actions text-center">
-      <%= f.button :submit, "Registrase", class: "btn btn-primary" %>
+      <%= f.button :submit, "Actualizar", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>

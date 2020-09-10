@@ -6,8 +6,8 @@
           <%= t.input :date, as: :string, input_html: { id: 'fecha' }, label: 'Fecha de evento'%>
           <h3>Cliente</h3>
           <select id="select2" name="state">
-            <%= User.all.each do |user| %>
-            <option value=<%= "#{user.id}" %>><%= user.razon_social%></option>
+            <%= Cliente.all.each do |cliente| %>
+            <option value=<%= "#{cliente.id}" %>><%= cliente.name %> -- <%=cliente.razon_social%></option>
             <% end %>
           </select>
           <%= t.input :razon_social, input_html: { id: 'razon_social'}%>
@@ -15,9 +15,14 @@
           <%= t.input :ruc, input_html: { id: 'ruc' }%>
           <%= t.input :email, input_html: { id: 'email' }%>
           <%= t.input :tel, input_html: { id: 'tel' } %>
-          <%= t.input :lugar, input_html: { id: 'lugar' }%>
-          <%= t.input :obs%>
           <%= t.input :sena, label: "Seña"%>
+          <select id="select3">
+            <option value="">Ubicacion 1</option>
+          </select>
+          <%= t.input :lugar, label: "Link de google"%>
+          <%= t.input :ciudad, input_html: { id: 'lugar' }%>
+          <%= t.input :zona, input_html: { id: 'zona' }%>
+          <%= t.input :obs, input_html: { id: 'obs' }%>
           <%= t.input :latitud, input_html: { id: 'latitud' }%>
           <%= t.input :longitud, input_html: { id: 'longitud' }%>
           <div class="text-center">

@@ -1,9 +1,24 @@
+const list = (data) => {
+  console.log("hola probando");
+  const lista = data['ubicacions']
+  const lugar = document.querySelector("#select3");
+  const sel = document.getElementById('select3');
+  let i = 0;
+    for (i = sel.length - 1; i >= 0; i--) {
+      sel.remove(i);
+    };
+  lista.forEach((list) => {
+    console.log(list);
+    lugar.insertAdjacentHTML("beforeend", `<option value=\"${list['id']}\"> ${ list['name'] } -- ${ list['ciudad'] } </option>`);
+  });
+};
+
 
 const autocomplete = () => {
 if (document.getElementById('select2')) {
 const id = document.getElementById('select2').value;
 if (id != "") {
-fetch(`http://www.megachopp.com.py/api/v1/users/${id}`)
+fetch(`http://megachopp.com.py/api/v1/clientes/${id}`)
   .then(response => response.json())
   .then((data) => {
     const cliente = document.getElementById('cliente');
@@ -14,19 +29,16 @@ fetch(`http://www.megachopp.com.py/api/v1/users/${id}`)
     const lugar = document.getElementById('lugar');
     const latitud = document.getElementById('latitud');
     const longitud = document.getElementById('longitud');
-    cliente.value = data['first_name']
+    cliente.value = data['name']
     razon_social.value = data['razon_social']
     ruc.value = data['ruc']
     email.value = data['email']
-    tel.value = data['phone_number']
-    lugar.value = data['lugar']
-    latitud.value = data['latitud']
-    longitud.value = data['longitud']
+    tel.value = data['tel']
     console.log(data);
+    list(data);
   });
 };
 };
-
 
 }
 

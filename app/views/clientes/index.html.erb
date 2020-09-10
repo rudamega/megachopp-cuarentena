@@ -16,9 +16,10 @@
               <td><%= cliente.name %></td>
               <td><%= cliente.razon_social %></td>
               <td><%= cliente.tel %></td>
+              <td><%= link_to "Ver", cliente_path(cliente)%></td>
               <td><%= link_to "Editar", edit_cliente_path(cliente)%></td>
-            </tr>
             <% end %>
+            </tr>
           </tbody>
         </table>
 </div>
