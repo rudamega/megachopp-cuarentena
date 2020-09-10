@@ -16,6 +16,7 @@ import { Spanish } from "flatpickr/dist/l10n/es.js"
 require('flatpickr/dist/flatpickr.css')
 
 import { initSelect2 } from 'components/init_select2';
+import { initSelect3 } from 'components/init_select3';
 
 // [...]
 
@@ -47,6 +48,7 @@ document.addEventListener('turbolinks:load', () => {
   previewImageOnFileSelect();
   modal();
   initSelect2();
+  initSelect3();
   flatpickr("#fecha",
     {
       "locale": Spanish,

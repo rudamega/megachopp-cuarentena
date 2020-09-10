@@ -25,7 +25,8 @@ class ClientesController < ApplicationController
   end
 
   def update
-    @cliente = Cliente.update(clientes_params)
+    @cliente = Cliente.find(params[:id])
+    @cliente.update(clientes_params)
     redirect_to cliente_path(@cliente)
   end
 

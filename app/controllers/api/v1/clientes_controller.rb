@@ -1,5 +1,5 @@
 class Api::V1::ClientesController < Api::V1::BaseController
-  before_action :set_user, only: [:show]
+  before_action :set_cliente, only: [:show]
 
   def index
     @clientes = policy_scope(Cliente)
@@ -10,8 +10,8 @@ class Api::V1::ClientesController < Api::V1::BaseController
 
   private
 
-  def set_user
-    @user = Clientes.find(params[:id])
-    authorize @user
+  def set_cliente
+    @cliente = Cliente.find(params[:id])
+    authorize @cliente
   end
 end
