@@ -3,18 +3,22 @@
     <h2>Pedido</h2>
 
       <%@cart.cart_items.where(status: "added").each do |items|%>
-      <h6><%= items.quantity %> x <%= items.item.description %></h6>
+      <div class="encabezado">
+          <h6><%= items.quantity%>  x </h6>
+          <h6><%= items.item.description %> </h6>
+          <h6><%= items.price%> </h6>
+        </div>
     <% end %>
   </div>
-  <div class="pedido text-center">
-      <div class="encabezado">
-       <h6>Cant    Descripcion    Precio   Total</h6>
-      </div>
   <div class="pedido text-center">
     <h2>Consignacion</h2>
 
       <%@cart.cart_items.where(status: "consignacion").each do |items|%>
-        <h6><%= items.quantity %> x <%= items.item.description %> <%= items.item.price%></h6>
+        <div class="encabezado">
+          <h6><%= items.quantity%>  x </h6>
+          <h6><%= items.item.description %> </h6>
+          <h6><%= items.price%> </h6>
+        </div>
       <% end %>
   </div>
   <div class="pedido">
@@ -28,5 +32,4 @@
     <%=link_to "Editar", cart_path(@cart), class: ("btn btn-primary")%>
     <%= link_to "GOOGLE", "http://#{@cart.lugar}", target: :_blank %>
   </div>
-</div>
 </div>
