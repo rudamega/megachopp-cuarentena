@@ -17,6 +17,6 @@ class UbicacionsController < ApplicationController
   private
 
   def ubicacion_delcliente
-    params.require(:ubicacion).permit(:name, :latitud, :longitud, :ciudad, :zona, :obs)
+    params.require(:ubicacion).permit(:name, :latitud, :link, :longitud, :ciudad, :zona, :obs)
   end
 end
