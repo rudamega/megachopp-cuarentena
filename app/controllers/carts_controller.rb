@@ -89,7 +89,7 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
     if @cart.update(carts_params)
       mail = UserMailer.with(cart: @cart).confirmado
-      mail.deliver_now
+      mail.deliver_later
       redirect_to carts_path
     end
   end
