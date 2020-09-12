@@ -1,3 +1,3 @@
 json.array! @confirmados do |cart|
-  json.extract! cart, :id, :status, :razon_social, :latitud, :longitud, :ciudad
+  json.extract! cart, :id, :status, :lugar, :razon_social, :latitud, :longitud, :ciudad, :cart_items
 end

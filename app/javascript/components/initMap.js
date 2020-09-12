@@ -10,17 +10,31 @@
           const lati = Number(list['latitud'])
           const longi = Number(list['longitud'])
           latLng.push([{lat: lati, lng: longi}, "blue"])
+
+          const contentString = `<h6>${list['razon_social']}</h6>`+
+          `<a href="${list['lugar']}">` +
+         "Ir a la Ubi</a>";
+
+          const infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
           let markers = latLng.map(function(location) {
             console.log(latLng)
             console.log(location)
-            return new google.maps.Marker({
+            let marker =  new google.maps.Marker({
                   position: location[0],
                   map: map,
                   icon: {
                     url: `http://maps.google.com/mapfiles/ms/icons/${location[1]}-dot.png`
                   }
             })
+
+            marker.addListener("click", () => {
+              infowindow.open(map, marker);
+            });
           });
+
         };
       });
     });
@@ -29,7 +43,7 @@
 
   const entregado = (map) => {
     let latLng1 = [];
-    fetch(`http://localhost:3000/api/v1/cart_entregado`)
+    fetch(`http://megachopp.com.py/api/v1/cart_entregado`)
     .then(response => response.json())
     .then((data) => {
       const lista = data;
@@ -38,16 +52,30 @@
           const lati = Number(list['latitud'])
           const longi = Number(list['longitud'])
           latLng1.push([{lat: lati, lng: longi}, "green"])
+
+           const contentString = `<h6>${list['razon_social']}</h6>`+
+           `<a href="${list['lugar']}" target="_blank">` +
+          "Ir a la Ubi</a>";
+
+          const infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
            let markers1 = latLng1.map(function(location1) {
             console.log(latLng1)
             console.log(location1)
-            return new google.maps.Marker({
+            let marker =  new google.maps.Marker({
                   position: location1[0],
                   map: map,
                   icon: {
                     url: `http://maps.google.com/mapfiles/ms/icons/${location1[1]}-dot.png`
                   }
             })
+
+            marker.addListener("click", () => {
+              infowindow.open(map, marker);
+            });
+
           });
           // addMarker({lat: lati, lng: longi}, "green");
         };

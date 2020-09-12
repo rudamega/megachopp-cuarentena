@@ -38,7 +38,7 @@
               <td><%= ubi.name%></td>
               <td><%= ubi.ciudad %></td>
               <td><%= ubi.zona %></td>
-              <td><%= link_to "Ver", ubicacion_path(ubi)%></td>
+              <td><%= link_to "Ver ubi", ubi.link, target: :_blank, class: ("btn btn-primary ") %></td>
               <td><%= link_to "Editar", edit_ubicacion_path(ubi)%></td>
             </tr>
             <% end %>

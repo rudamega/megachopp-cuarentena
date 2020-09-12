@@ -46,7 +46,7 @@
                 <tr class=<%="#{carts.status}"%>>
                 <td><%= carts.id %></td>
                   <th scope="row" class="lista">
-                      <%= link_to "#{carts.date}", mostrar_path(carts) %>
+                      <%= link_to "#{carts.date.strftime("%d/%m/%y")}", mostrar_path(carts) %>
                     </th>
                     <td><%= carts.cliente %></td>
                     <td><%= carts.razon_social%></td>
