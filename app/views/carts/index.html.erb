@@ -11,6 +11,7 @@
               <th scope="col">Productos</th>
               <th scope="col">Consignacion</th>
               <th scope="col">Telefono</th>
+              <th scope="col">Mapa</th>
             </tr>
           </thead>
           <tbody>
@@ -40,7 +41,7 @@
               </tr>
             <%@carts.each do |carts|%>
               <% if carts.date != nil %>
-                <tr>
+                <tr class=<%="#{carts.status}"%>>
                   <th scope="row" class="lista">
                       <%= link_to "#{carts.date}", mostrar_path(carts) %>
                     </th>
@@ -61,6 +62,16 @@
                       </ul>
                     </td>
                     <td><%= carts.tel %></td>
+                    <td>
+                      <div class="text-center">
+                            <% if carts.show == "si" %>
+                              <a class=" btn btn-danger"><%= carts.show %></a>
+                              <% else %>
+                              <a class=" btn btn-primary"><%= carts.show %></a>
+
+                            <% end %>
+                      </div>
+                    </td>
                 <% end %>
                 </tr>
               <% end %>

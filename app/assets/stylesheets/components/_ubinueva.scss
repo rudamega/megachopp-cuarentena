@@ -4,4 +4,11 @@
 
 .agregarColor {
 background-color: red;
+border: red;
+  &:hover {
+  background-color: red;
+  border: red;
+  }
 }
+
+

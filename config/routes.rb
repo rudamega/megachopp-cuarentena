@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get 'cart_add/:id', to: 'cart_items#cart_add', as: :add
   end
     get 'cart_mostrar', to: 'carts#mostrar'
+    get 'cart_mapa', to: 'carts#mapa'
   resources :cart_items, only: [:destroy, :edit, :update]
 
   namespace :api, defaults: { format: :json } do
@@ -24,6 +25,9 @@ Rails.application.routes.draw do
       resources :users, only: [ :index, :show ]
       resources :clientes, only: [ :index, :show ]
       resources :ubicacions, only: [ :index, :show ]
+      resources :carts, only: [ :index, :confirmado, :entregado]
+      get 'cart_confirmado', to: 'carts#confirmado'
+      get 'cart_entregado', to: 'carts#entregado'
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

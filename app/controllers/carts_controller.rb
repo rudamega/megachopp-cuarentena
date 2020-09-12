@@ -28,6 +28,10 @@ class CartsController < ApplicationController
     end
   end
 
+  def mapa
+
+  end
+
   def new
     @cart = Cart.new
   end
