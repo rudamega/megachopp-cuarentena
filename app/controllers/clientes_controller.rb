@@ -1,10 +1,17 @@
 class ClientesController < ApplicationController
   def index
-    @clientes = Cliente.all
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR razon_social ILIKE :query"
+      @clientes = Cliente.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @clientes = Cliente.all.order(id: :desc).limit(50)
+    end
   end
 
   def show
     @cliente = Cliente.find(params[:id])
+    @ubicaciones = Ubicacion.where(cliente: @cliente)
+    @ubicacion = Ubicacion.new
   end
 
   def new

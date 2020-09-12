@@ -1,4 +1,5 @@
 class Api::V1::ClientesController < Api::V1::BaseController
+
   before_action :set_cliente, only: [:show]
 
   def index

@@ -1,12 +1,49 @@
 <div class="detalle">
   <div class="pedido">
-  Nombre o Encargado : <%= @cliente.name %> <br><br>
-  Razon social: <%= @cliente.razon_social%> <br> <br>
-  Ruc: <%= @cliente.ruc%> <br><br>
-  Tel: <%= @cliente.tel%> <br> <br>
-  <div class="text-center">
-    <%=link_to "Editar", edit_cliente_path(@cliente), class: ("btn btn-primary")%>
-    <%= link_to "GOOGLE", "http://", target: :_blank %>
+    Nro de cliente : <%= @cliente.id + 1000 %> <br><br>
+    Nombre o Encargado : <%= @cliente.name %> <br><br>
+    Razon social: <%= @cliente.razon_social%> <br> <br>
+    Ruc: <%= @cliente.ruc%> <br><br>
+    Tel: <%= @cliente.tel%> <br> <br>
+    email: <%= @cliente.email%> <br> <br>
+    <div class="text-center">
+      <%=link_to "Editar", edit_cliente_path(@cliente), class: ("btn btn-primary")%>
+      <%=link_to "Atras", :back, class: ("btn btn-primary")%>
+    </div>
   </div>
 </div>
+<div id="ubiNueva" class="none">
+    <%= render 'ubicacions/new'%>
 </div>
+<div class="text-center mb-3">
+      <a class="agregar btn btn-primary">Agregar Ubi</a>
+</div>
+
+<div class="tab-pane fade show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg">
+      <div style="overflow-x:auto;">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Ciudad</th>
+              <th scope="col">Zona</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @ubicaciones.each do |ubi| %>
+            <tr>
+              <td><%= ubi.name%></td>
+              <td><%= ubi.ciudad %></td>
+              <td><%= ubi.zona %></td>
+              <td><%= link_to "Ver", cliente_ubicacion_path(ubi)%></td>
+              <td><%= link_to "Editar", edit_cliente_ubicacion_path(ubi)%></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+
+

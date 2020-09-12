@@ -1,10 +1,23 @@
 
+<div style="width: 60%">
+  <%= form_tag clientes_path, method: :get do %>
+    <div class="d-flex">
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Nombre del cliente"
+    %>
+    <%= submit_tag "Buscar", class: "btn btn-primary" %>
+  <% end %>
+  </div>
+</div>
 <div class="tab-pane fade show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg">
       <div style="overflow-x:auto;">
         <table class="table table-hover">
           <thead>
             <tr>
+              <th scope="col">#</th>
               <th scope="col">Nombre</th>
               <th scope="col">Razon Social</th>
               <th scope="col">Telefono</th>
@@ -13,6 +26,7 @@
           <tbody>
             <% @clientes.each do |cliente| %>
             <tr>
+              <td><%= cliente.id + 1000 %></td>
               <td><%= cliente.name %></td>
               <td><%= cliente.razon_social %></td>
               <td><%= cliente.tel %></td>
@@ -22,5 +36,6 @@
             </tr>
           </tbody>
         </table>
-</div>
+      </div>
+    </div>
 </div>
