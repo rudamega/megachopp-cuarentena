@@ -57,7 +57,7 @@ document.addEventListener('turbolinks:load', () => {
     {
       "locale": Spanish,
       "altInput": true,
-      "altFormat": "l -- j - F, Y",
-      "dateFormat": "d-m-y",
+       "altFormat": "l -- j - F, Y",
+      // "dateFormat": "d-m-y",
     });
 });

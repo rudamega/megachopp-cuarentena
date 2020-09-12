@@ -88,8 +88,10 @@ class CartsController < ApplicationController
   def update
     @cart = Cart.find(params[:id])
     if @cart.update(carts_params)
-      mail = UserMailer.with(cart: @cart).confirmado
-      mail.deliver_later
+      if @cart.email != ""
+        mail = UserMailer.with(cart: @cart).confirmado
+        mail.deliver_later
+      end
       redirect_to carts_path
     end
   end
