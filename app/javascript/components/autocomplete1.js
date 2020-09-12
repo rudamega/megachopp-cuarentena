@@ -7,12 +7,14 @@ fetch(`http://megachopp.com.py/api/v1/ubicacions/${id}`)
   .then(response => response.json())
   .then((data) => {
     // lugar == link para google maps
-    const lugar = document.getElementById('lugar');
+    const link = document.getElementById('link');
+    const ciudad = document.getElementById('ciudad');
     const latitud = document.getElementById('latitud');
     const longitud = document.getElementById('longitud');
     // const zona = document.getElementById('zona');
     const obs = document.getElementById('obs');
-    lugar.value = data['ciudad']
+    link.value = data['link']
+    ciudad.value = data['ciudad']
     latitud.value = data['latitud']
     longitud.value = data['longitud']
     obs.value = data['obs']

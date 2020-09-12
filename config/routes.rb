@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get 'cart_mostrar/:id', to: 'carts#mostrar', as: :mostrar
 
   resources :clientes do
-    resources :ubicacions
+    resources :ubicacions, only: [:index]
   end
+  resources :ubicacions, only: [:edit, :update]
 
   resources :carts do
     resources :cart_items, only: [:index, :new, :create]
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
     get 'cart_vaciar', to: 'carts#cart_vaciar'
     get 'cart_consi/:id', to: 'cart_items#cart_consi', as: :consig
     get 'cart_add/:id', to: 'cart_items#cart_add', as: :add
+    get 'cart_mapa_si', to: 'carts#mapa_si'
+    get 'cart_mapa_no', to: 'carts#mapa_no'
   end
     get 'cart_mostrar', to: 'carts#mostrar'
     get 'cart_mapa', to: 'carts#mapa'

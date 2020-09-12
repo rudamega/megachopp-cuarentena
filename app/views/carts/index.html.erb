@@ -5,6 +5,7 @@
         <table class="table table-hover">
           <thead>
             <tr>
+              <th scope="col">#</th>
               <th scope="col">Fecha</th>
               <th scope="col">Cliente</th>
               <th scope="col">Facturar A</th>
@@ -17,6 +18,7 @@
           <tbody>
             <%@carts.where(date: nil).each do |carts|%>
               <tr>
+                <td><%= carts.id %></td>
                 <th scope="row" class="lista">
                     <%= link_to "Editar", mostrar_path(carts) %>
                   </th>
@@ -42,6 +44,7 @@
             <%@carts.each do |carts|%>
               <% if carts.date != nil %>
                 <tr class=<%="#{carts.status}"%>>
+                <td><%= carts.id %></td>
                   <th scope="row" class="lista">
                       <%= link_to "#{carts.date}", mostrar_path(carts) %>
                     </th>
@@ -65,10 +68,9 @@
                     <td>
                       <div class="text-center">
                             <% if carts.show == "si" %>
-                              <a class=" btn btn-danger"><%= carts.show %></a>
-                              <% else %>
-                              <a class=" btn btn-primary"><%= carts.show %></a>
-
+                              <%= link_to carts.show, cart_cart_mapa_no_path(carts), class: (" btn btn-success")%>
+                            <% else %>
+                              <%= link_to carts.show, cart_cart_mapa_si_path(carts), class: (" btn btn-danger")%>
                             <% end %>
                       </div>
                     </td>

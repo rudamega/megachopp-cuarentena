@@ -9,6 +9,7 @@ const list = (data) => {
     };
   lista.forEach((list) => {
     console.log(list);
+    lugar.insertAdjacentHTML("beforeend", `<option value=\"0\"> Elegir -- Ubicacion } </option>`);
     lugar.insertAdjacentHTML("beforeend", `<option value=\"${list['id']}\"> ${ list['name'] } -- ${ list['ciudad'] } </option>`);
   });
 };
@@ -18,7 +19,7 @@ const autocomplete = () => {
 if (document.getElementById('select2')) {
 const id = document.getElementById('select2').value;
 if (id != "") {
-fetch(`http://megachopp.com.py/api/v1/clientes/${id}`)
+fetch(`http://localhost:3000/api/v1/clientes/${id}`)
   .then(response => response.json())
   .then((data) => {
     const cliente = document.getElementById('cliente');

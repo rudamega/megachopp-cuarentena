@@ -1,7 +1,7 @@
 
   const confirmado = (map) => {
     let latLng = [];
-    fetch(`http://localhost:3000/api/v1/cart_confirmado`)
+    fetch(`http://megachopp.com.py/api/v1/cart_confirmado`)
     .then(response => response.json())
     .then((data) => {
       const lista = data;

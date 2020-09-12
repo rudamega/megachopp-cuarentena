@@ -28,6 +28,8 @@
               <th scope="col">Nombre</th>
               <th scope="col">Ciudad</th>
               <th scope="col">Zona</th>
+              <th scope="col">Acciones</th>
+              <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -36,8 +38,8 @@
               <td><%= ubi.name%></td>
               <td><%= ubi.ciudad %></td>
               <td><%= ubi.zona %></td>
-              <td><%= link_to "Ver", cliente_ubicacion_path(ubi)%></td>
-              <td><%= link_to "Editar", edit_cliente_ubicacion_path(ubi)%></td>
+              <td><%= link_to "Ver", ubicacion_path(ubi)%></td>
+              <td><%= link_to "Editar", edit_ubicacion_path(ubi)%></td>
             </tr>
             <% end %>
           </tbody>

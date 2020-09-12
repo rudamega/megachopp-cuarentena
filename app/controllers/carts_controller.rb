@@ -32,6 +32,18 @@ class CartsController < ApplicationController
 
   end
 
+  def mapa_si
+    @cart = Cart.find(params[:cart_id])
+    @cart.show = "si"
+    redirect_to carts_path if @cart.save
+  end
+
+  def mapa_no
+    @cart = Cart.find(params[:cart_id])
+    @cart.show = "no"
+    redirect_to carts_path if @cart.save
+  end
+
   def new
     @cart = Cart.new
   end
@@ -60,7 +72,7 @@ class CartsController < ApplicationController
         item.status = "added"
         item.save
       end
-      @cart.status = "confirmed"
+      @cart.status = "confirmado"
       @cart.save
       redirect_to edit_cart_path(@cart)
       return

@@ -22,14 +22,21 @@
       <% end %>
   </div>
   <div class="pedido">
-   Serivicio solicitado por : <%= @cart.cliente %> <br><br>
-  Fecha del servicio: <%= @cart.date %> <br> <br>
-  Razon social: <%= @cart.razon_social%> <br> <br>
-  Ruc: <%= @cart.ruc%> <br><br>
-  Tel: <%= @cart.tel%> <br> <br>
-  <div class="osb">Obs: <%= @cart.obs%> <br> <br></div>
-  <div class="text-center">
-    <%=link_to "Editar", cart_path(@cart), class: ("btn btn-primary")%>
-    <%= link_to "GOOGLE", "http://#{@cart.lugar}", target: :_blank %>
+     Serivicio solicitado por : <%= @cart.cliente %> <br><br>
+    Fecha del servicio: <%= @cart.date %> <br> <br>
+    Razon social: <%= @cart.razon_social%> <br> <br>
+    Ruc: <%= @cart.ruc%> <br><br>
+    Tel: <%= @cart.tel%> <br> <br>
+    <div class="osb">Obs: <%= @cart.obs%> <br> <br></div>
+    <div class="d-flex justify-content-around">
+      <%= link_to @cart.tel, "tel:#{@cart.tel}", class: ("btn btn-success ") %>
+      <%= link_to Ubicacion, "#{@cart.lugar}", target: :_blank, class: ("btn btn-primary ") %>
+    </div>
+    <div class="text-center m-5">
+
+    </div>
+    <div class="text-center">
+      <%=link_to "Editar", cart_path(@cart), class: ("btn btn-primary")%>
+    </div>
   </div>
 </div>
