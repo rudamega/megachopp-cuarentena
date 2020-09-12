@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'cart_mostrar/:id', to: 'carts#mostrar', as: :mostrar
 
   resources :clientes do
-    resources :ubicacions, only: [:index]
+    resources :ubicacions, only: [:index, :create]
   end
   resources :ubicacions, only: [:edit, :update]
 
