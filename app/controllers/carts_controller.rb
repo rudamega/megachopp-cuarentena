@@ -26,6 +26,7 @@ class CartsController < ApplicationController
         render template: 'carts/pdf', pdf: "#{@cart.cliente}" # Excluding ".pdf" extension.
       end
     end
+    @factura = Factura.new
   end
 
   def mapa
@@ -88,10 +89,10 @@ class CartsController < ApplicationController
   def update
     @cart = Cart.find(params[:id])
     if @cart.update(carts_params)
-      if @cart.email != ""
-        mail = UserMailer.with(cart: @cart).confirmado
-        mail.deliver_later
-      end
+      # if @cart.email != ""
+        # mail = UserMailer.with(cart: @cart).confirmado
+        # mail.deliver_later
+      # end
       redirect_to carts_path
     end
   end
