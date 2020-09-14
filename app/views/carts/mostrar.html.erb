@@ -1,4 +1,10 @@
 <div class="detalle">
+  <% if @cart.status == "facturado" %>
+    <div class="pedido text-center">
+      Factura <%=@facturas.first.condicion%> <br>
+      Nro: 001-003-00000<%=@facturas.first.nro%>
+    </div>
+  <% end %>
   <div class="pedido text-center">
     <h2>Pedido</h2>
 
@@ -6,7 +12,7 @@
       <div class="encabezado">
           <h6><%= items.quantity%>  x </h6>
           <h6><%= items.item.description %> </h6>
-          <h6><%= items.price%> </h6>
+          <h6><%= number_with_delimiter(items.price, :delimiter => '.') %></h6>
         </div>
     <% end %>
   </div>
@@ -17,7 +23,7 @@
         <div class="encabezado">
           <h6><%= items.quantity%>  x </h6>
           <h6><%= items.item.description %> </h6>
-          <h6><%= items.price%> </h6>
+          <h6><%= number_with_delimiter(items.price, :delimiter => '.') %></h6>
         </div>
       <% end %>
   </div>
@@ -39,8 +45,9 @@
         <%= render 'facturas/new'%>
     </div>
     <div class="text-center">
-
-      <a class="factura btn btn-danger">Facturar</a>
+      <% if @cart.status != "facturado" %>
+        <a class="factura btn btn-danger">Facturar</a>
+      <% end %>
       <%=link_to "Editar", cart_path(@cart), class: ("btn btn-primary")%>
     </div>
   </div>
