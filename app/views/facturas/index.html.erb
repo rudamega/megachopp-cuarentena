@@ -9,9 +9,10 @@
               <th scope="col">Fecha</th>
               <th scope="col">Nro de Factura</th>
               <th scope="col">Razon Social</th>
-              <th scope="col">Total</th>
               <th scope="col">Condicion</th>
-              <th scope="col">Pagos</th>
+              <th scope="col">Total</th>
+              <th scope="col">Pagado</th>
+              <th scope="col">Saldo</th>
             </tr>
           </thead>
           <tbody>
@@ -21,6 +22,10 @@
                 <td><%= factura.date.strftime("%d/%m/%y")%></td>
                 <td><%="001-003-0000#{factura.nro}"%></td>
                 <td><%= factura.razon_social%></td>
+                <td><%= factura.condicion%></td>
+                <td><%= factura.total%></td>
+                <td><%= factura.condicion%></td>
+                <td><%= factura.condicion%></td>
               <% end %>
               </tr>
           </tbody>

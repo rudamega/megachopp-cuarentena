@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_125514) do
+ActiveRecord::Schema.define(version: 2020_09_14_160518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,8 @@ ActiveRecord::Schema.define(version: 2020_09_14_125514) do
     t.bigint "cart_id", null: false
     t.string "total"
     t.date "date"
+    t.integer "pagado"
+    t.integer "saldo"
     t.index ["cart_id"], name: "index_facturas_on_cart_id"
     t.index ["cliente_id"], name: "index_facturas_on_cliente_id"
     t.index ["user_id"], name: "index_facturas_on_user_id"

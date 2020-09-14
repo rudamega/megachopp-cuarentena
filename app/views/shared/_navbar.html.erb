@@ -37,7 +37,7 @@
               <% end %>
             <% end %>
             <% if current_user.rol == "admin" || current_user.rol == "vendedor"%>
-              <%= link_to facturas_path, class: "dropdown-item", method: :post do%>
+              <%= link_to facturas_path, class: "dropdown-item" do%>
                 POS
               <% end %>
             <% end %>
