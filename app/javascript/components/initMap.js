@@ -11,7 +11,7 @@
           const longi = Number(list['longitud'])
           latLng.push([{lat: lati, lng: longi}, "blue"])
 
-          const contentString =`<h6>Cliente: ${list['cliente']}</h6>`+
+          let contentString =`<h6>Cliente: ${list['cliente']}</h6>`+
           `<h6>Ruc: ${list['razon_social']}</h6>`+
           `<a href="${list['lugar']} "target="_blank">` +
          "Ir a la Ubi</a>";

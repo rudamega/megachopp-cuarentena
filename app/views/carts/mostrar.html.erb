@@ -35,7 +35,12 @@
     <div class="text-center m-5">
 
     </div>
+    <div id="FactuNueva" class="none">
+        <%= render 'facturas/new'%>
+    </div>
     <div class="text-center">
+
+      <a class="factura btn btn-danger">Facturar</a>
       <%=link_to "Editar", cart_path(@cart), class: ("btn btn-primary")%>
     </div>
   </div>

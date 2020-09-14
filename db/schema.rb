@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_12_021627) do
+ActiveRecord::Schema.define(version: 2020_09_14_125514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 2020_09_12_021627) do
     t.string "ciudad"
     t.string "zona"
     t.string "show", default: "no"
+    t.bigint "cliente_id"
+    t.index ["cliente_id"], name: "index_carts_on_cliente_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
@@ -79,6 +81,24 @@ ActiveRecord::Schema.define(version: 2020_09_12_021627) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ruc"
+  end
+
+  create_table "facturas", force: :cascade do |t|
+    t.string "nro"
+    t.string "razon_social"
+    t.string "ruc"
+    t.string "email"
+    t.string "condicion"
+    t.bigint "user_id", null: false
+    t.bigint "cliente_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "cart_id", null: false
+    t.string "total"
+    t.date "date"
+    t.index ["cart_id"], name: "index_facturas_on_cart_id"
+    t.index ["cliente_id"], name: "index_facturas_on_cliente_id"
+    t.index ["user_id"], name: "index_facturas_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -132,6 +152,10 @@ ActiveRecord::Schema.define(version: 2020_09_12_021627) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "items"
+  add_foreign_key "carts", "clientes"
   add_foreign_key "carts", "users"
+  add_foreign_key "facturas", "carts"
+  add_foreign_key "facturas", "clientes"
+  add_foreign_key "facturas", "users"
   add_foreign_key "ubicacions", "clientes"
 end
