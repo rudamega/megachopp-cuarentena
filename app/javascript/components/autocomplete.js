@@ -23,6 +23,7 @@ fetch(`http://megachopp.com.py/api/v1/clientes/${id}`)
   .then(response => response.json())
   .then((data) => {
     const cliente = document.getElementById('cliente');
+    const cliente_id = document.getElementById('cliente_id');
     const razon_social = document.getElementById('razon_social');
     const ruc = document.getElementById('ruc');
     const email = document.getElementById('email');
@@ -30,6 +31,7 @@ fetch(`http://megachopp.com.py/api/v1/clientes/${id}`)
     const lugar = document.getElementById('lugar');
     const latitud = document.getElementById('latitud');
     const longitud = document.getElementById('longitud');
+    cliente_id.value = id
     cliente.value = data['name']
     razon_social.value = data['razon_social']
     ruc.value = data['ruc']

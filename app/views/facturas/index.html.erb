@@ -23,9 +23,9 @@
                 <td><%="001-003-0000#{factura.nro}"%></td>
                 <td><%= factura.razon_social%></td>
                 <td><%= factura.condicion%></td>
-                <td><%= factura.total%></td>
-                <td><%= factura.condicion%></td>
-                <td><%= factura.condicion%></td>
+                <td><%= number_with_delimiter(factura.total.to_i, :delimiter => '.') %></td>
+                <td><%= number_with_delimiter(factura.pagado, :delimiter => '.') %></td>
+                <td><%= number_with_delimiter(factura.saldo, :delimiter => '.') %></td>
               <% end %>
               </tr>
           </tbody>

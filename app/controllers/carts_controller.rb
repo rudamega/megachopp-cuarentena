@@ -19,6 +19,9 @@ class CartsController < ApplicationController
 
   def mostrar
     @cart = Cart.find(params[:id])
+    if @cart.status == "facturado"
+      @facturas = Factura.where(cart: @cart)
+    end
     @lugar = @cart.lugar
     respond_to do |format|
       format.html
@@ -103,6 +106,6 @@ class CartsController < ApplicationController
   private
 
   def carts_params
-    params.require(:cart).permit(:date, :email, :tel, :latitud, :longitud, :ruc, :cliente, :razon_social, :lugar)
+    params.require(:cart).permit(:date, :email, :tel, :latitud, :longitud, :ruc, :cliente, :razon_social, :cliente_id, :lugar)
   end
 end

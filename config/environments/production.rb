@@ -1,5 +1,4 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://megachopp.com.py" }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: "http://megachopp.com.py/" }# Settings specified here will take precedence over those in config/application.rb.

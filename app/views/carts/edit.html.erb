@@ -10,6 +10,7 @@
             <option value=<%= "#{cliente.id}" %>><%= cliente.name %> -- <%=cliente.razon_social%></option>
             <% end %>
           </select>
+          <%= t.input :cliente_id, input_html: { id: 'cliente_id' }, as: :hidden%>
           <%= t.input :razon_social, input_html: { id: 'razon_social'}%>
           <%= t.input :cliente, input_html: { id: 'cliente' }%>
           <%= t.input :ruc, input_html: { id: 'ruc' }%>
