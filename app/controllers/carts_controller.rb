@@ -1,10 +1,15 @@
 class CartsController < ApplicationController
   def index
-    @carts = Cart.all.order(date: :asc)
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render template: 'carts/lista', pdf: "Lista de pedidos" # Excluding ".pdf" extension.
+    if params[:query].present?
+      sql_query = "cliente ILIKE :query OR razon_social ILIKE :query"
+      @carts = Cart.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @carts = Cart.all.order(date: :asc)
+      respond_to do |format|
+        format.html
+        format.pdf do
+          render template: 'carts/lista', pdf: "Lista de pedidos" # Excluding ".pdf" extension.
+        end
       end
     end
   end
