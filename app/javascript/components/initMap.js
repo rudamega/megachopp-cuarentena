@@ -13,7 +13,8 @@
           const cliente = list['cliente']
           const razon = list['razon_social']
           const link = list['lugar']
-          latLng.push([{lat: lati, lng: longi}, "blue", cliente, link, razon ]);
+          const date = list['date']
+          latLng.push([{lat: lati, lng: longi}, "blue", cliente, link, razon, date ]);
         };
       });
 
@@ -26,7 +27,8 @@
           }
          })
 
-        let contentString =`<h6>Cliente: ${location[2]}</h6>`+
+        let contentString =`<h6>Fecha de entrega: ${location[5]}</h6>`+
+        `<h6>Cliente: ${location[2]}</h6>`+
          `<h6>Ruc: ${location[4]}</h6>`+
          `<a href="${location[3]} "target="_blank">` +
          "Ir a la Ubi</a>";
@@ -56,7 +58,8 @@
           const cliente = list['cliente']
           const razon = list['razon_social']
           const link = list['lugar']
-          latLng1.push([{lat: lati, lng: longi}, "green", cliente, link, razon])
+          const date = list['date']
+          latLng1.push([{lat: lati, lng: longi}, "green", cliente, link, razon, date])
           // addMarker({lat: lati, lng: longi}, "green");
 
         };
@@ -71,7 +74,8 @@
           }
          })
 
-        let contentString =`<h6>Cliente: ${location[2]}</h6>`+
+        let contentString =`<h6>Fecha de entrega: ${location[5]}</h6>`+
+        `<h6>Cliente: ${location[2]}</h6>`+
          `<h6>Ruc: ${location[4]}</h6>`+
          `<a href="${location[3]} "target="_blank">` +
          "Ir a la Ubi</a>";
