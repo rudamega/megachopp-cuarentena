@@ -5,7 +5,9 @@
 </form>
 <div class="m-3">
   Cantidad de confirmados: <%= @carts.where(status: "confirmado").length %> <br>
-  Cantidad de Entregados: <%= @carts.where(status: "entregado").length %>
+  Cantidad de Entregados: <%= @carts.where(status: "entregado").length %> <br>
+  Cantidad de solo Barril: <%= @carts.where(status: "solo-barril").length %> <br>
+  Cantidad de Maquina Fija: <%= @carts.where(status: "Maquina fija").length %>
 </div>
 <div class="tab-pane fade show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg">
