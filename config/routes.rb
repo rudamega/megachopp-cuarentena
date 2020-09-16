@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'crear_factura', to: 'facturas#crear_factura'
   resources :facturas, only:[:index]
   resources :carts do
+    get 'cambiar', to: 'carts#cambiar'
     resources :facturas, only:[:new, :create]
     resources :cart_items, only: [:index, :new, :create]
     get 'cart_confirmado', to: 'carts#cart_confirmado'
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
   end
     get 'cart_mostrar', to: 'carts#mostrar'
     get 'cart_mapa', to: 'carts#mapa'
+    get 'cart_entregar', to: 'carts#entregar'
+    get 'cart_retirar', to: 'carts#retirar'
   resources :cart_items, only: [:destroy, :edit, :update]
 
   namespace :api, defaults: { format: :json } do

@@ -10,7 +10,7 @@ const funcion = () => {
 }
 
 const facturaRender = () => {
-  if (document.getElementById("FactuNueva") != null) {
+  if (document.querySelector('.factura') != null) {
   document.querySelector('.factura').addEventListener("click", funcion)
   }
 };

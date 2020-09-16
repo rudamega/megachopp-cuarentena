@@ -1,0 +1,5 @@
+    <h6 class="text-center"> Cambiar estado </h6>
+    <%= simple_form_for(@cart) do |t| %>
+      <%= t.input :status, label: "Estado", class:( "text-center") ,collection: ["confirmado","entregado", "retirado", "solo-barril", 'Maquina fija']%>
+      <%= t.submit "Cambiar estado"%>
+    <% end %>

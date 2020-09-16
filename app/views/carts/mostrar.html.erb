@@ -1,13 +1,31 @@
 <div class="detalle">
-  <% if @cart.status == "facturado" %>
+  <% if @cart.status == "confirmado" %>
+    <div class="pedido text-center btn-primary">
+      CONFIRMADO
+    </div>
+  <% end %>
+  <% if @cart.status == "entregado" %>
+    <div class="pedido text-center btn-success">
+      ENTREGADO
+    </div>
+  <% end %>
+  <% if @cart.status == "solo-barril" %>
     <div class="pedido text-center">
-      Factura <%=@facturas.first.condicion%> <br>
-      Nro: 001-003-00000<%=@facturas.first.nro%>
+      SOLO BARRIL
+    </div>
+  <% end %>
+  <% if @cart.status == "retirado" %>
+    <div class="pedido text-center">
+      RETIRADO
+    </div>
+  <% end %>
+  <% if @cart.status == "maquina-fija"%>
+    <div class="pedido text-center BT">
+      MAQUINA FIJA
     </div>
   <% end %>
   <div class="pedido text-center">
     <h2>Pedido</h2>
-
       <%@cart.cart_items.where(status: "added").each do |items|%>
       <div class="encabezado">
           <h6><%= items.quantity%>  x </h6>
@@ -38,8 +56,12 @@
       <%= link_to @cart.tel, "tel:#{@cart.tel}", class: ("btn btn-success ") %>
       <%= link_to Ubicacion, "#{@cart.lugar}", target: :_blank, class: ("btn btn-primary ") %>
     </div>
-    <div class="text-center m-5">
 
+    <div id="cambiarEstado" class="m-5 none">
+      <%= render 'carts/cambiar'%>
+    </div>
+    <div class="text-center m-3">
+        <a class="cambiar btn btn-danger">Cambiar estado</a>
     </div>
     <div id="FactuNueva" class="none">
         <%= render 'facturas/new'%>
