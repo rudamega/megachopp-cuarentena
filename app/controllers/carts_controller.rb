@@ -37,6 +37,10 @@ class CartsController < ApplicationController
     @factura = Factura.new
   end
 
+  def cambiar
+    @cart = Cart.find(params[:id])
+  end
+
   def mapa
 
   end
@@ -111,6 +115,6 @@ class CartsController < ApplicationController
   private
 
   def carts_params
-    params.require(:cart).permit(:date, :email, :tel, :latitud, :longitud, :ruc, :cliente, :razon_social, :cliente_id, :lugar)
+    params.require(:cart).permit(:date, :status, :email, :tel, :latitud, :longitud, :ruc, :cliente, :razon_social, :cliente_id, :lugar)
   end
 end

@@ -21,7 +21,7 @@ class FacturasController < ApplicationController
       item.stock -= items.quantity.to_i
       item.save
       total = @factura.total.to_i
-      totatilu = total + items.quantity.to_i * items.price
+      totatilu = total + (items.quantity.to_i * items.price)
       @factura.total = totatilu.to_s
       @factura.save
     end

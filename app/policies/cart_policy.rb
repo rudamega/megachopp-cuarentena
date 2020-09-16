@@ -1,7 +1,7 @@
 class CartPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(status: "confirmed")
+      scope.all
     end
   end
 

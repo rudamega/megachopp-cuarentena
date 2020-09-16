@@ -19,6 +19,7 @@ import { initSelect2 } from 'components/init_select2';
 import { initSelect3 } from 'components/init_select3';
 import { initMap } from 'components/initMap';
 import { ubicacionRender } from 'components/ubicacion_render';
+import { estadoRender } from 'components/estado_render';
 import { facturaRender } from 'components/factura_render';
 
 // [...]
@@ -53,6 +54,7 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2();
   initSelect3();
   initMap();
+  estadoRender();
   facturaRender();
   ubicacionRender();
   flatpickr("#fecha",
