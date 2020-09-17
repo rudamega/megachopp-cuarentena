@@ -9,6 +9,16 @@
   Cantidad de solo Barril: <%= @carts.where(status: "solo-barril").length %> <br>
   Cantidad de Maquina Fija: <%= @carts.where(status: "Maquina fija").length %>
 </div>
+  <div class="text-center m-3">
+    <select id="select4">
+      <option value="todos">Todos</option>
+      <option value="Confirmados">Confirmados</option>
+      <option value="Entregados">Entregados</option>
+      <option value="Retirados">Retirados</option>
+      <option value="Solo Barril">Solo Barril</option>
+      <option value="Maquina fija">Maquina Fija</option>
+    </select>
+  </div>
 <div class="tab-pane fade show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg">
       <div style="overflow-x:auto;">
@@ -17,6 +27,7 @@
             <tr>
               <th>#</th>
               <th>Fecha</th>
+              <th>Obs</th>
               <th>Cliente</th>
               <th>Facturar A</th>
               <th>Productos</th>
@@ -32,6 +43,7 @@
                 <th scope="row" class="lista">
                     <%= link_to "Editar", mostrar_path(carts) %>
                   </th>
+                  <td><%= carts.obs %></td>
                   <td><%= carts.cliente %></td>
                   <td><%= carts.razon_social%></td>
                   <td>
@@ -64,6 +76,7 @@
                         <% end %>
                       </div>
                     </th>
+                    <td><%= carts.obs %></td>
                     <td><%= carts.cliente %></td>
                     <td><%= carts.razon_social%></td>
                     <td>
