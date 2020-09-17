@@ -1,87 +1,55 @@
-<form action="/carts" class="form-inline d-flex justify-content-center md-form form-sm mt-15 m-3 rounded-pill">
-  <input class="form-control form-control-sm ml-3 w-75" type="text" name="query" placeholder="Buscar"
-    aria-label="Search">
-  <button class="btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-</form>
-<div class="m-3">
-  Cantidad de confirmados: <%= @carts.where(status: "confirmado").length %> <br>
-  Cantidad de Entregados: <%= @carts.where(status: "entregado").length %> <br>
-  Cantidad de solo Barril: <%= @carts.where(status: "solo-barril").length %> <br>
-  Cantidad de Maquina Fija: <%= @carts.where(status: "Maquina fija").length %>
-</div>
-  <div class="text-center m-3">
-    <select id="select4">
-      <option value="todos">Todos</option>
-      <option value="Confirmados">Confirmados</option>
-      <option value="Entregados">Entregados</option>
-      <option value="Retirados">Retirados</option>
-      <option value="Solo Barril">Solo Barril</option>
-      <option value="Maquina fija">Maquina Fija</option>
-    </select>
+<% if current_user.rol == "admin" || current_user.rol == "vendedor"%>
+  <form action="/carts" class="form-inline d-flex justify-content-center md-form form-sm mt-15 m-3 rounded-pill">
+    <input class="form-control form-control-sm ml-3 w-75" type="text" name="query" placeholder="Buscar"
+      aria-label="Search">
+    <button class="btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+  </form>
+  <div class="m-3">
+    Cantidad de confirmados: <%= @carts.where(status: "confirmado").length %> <br>
+    Cantidad de Entregados: <%= @carts.where(status: "entregado").length %> <br>
+    Cantidad de solo Barril: <%= @carts.where(status: "solo-barril").length %> <br>
+    Cantidad de Maquina Fija: <%= @carts.where(status: "Maquina fija").length %>
   </div>
-<div class="tab-pane fade show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg">
-      <div style="overflow-x:auto;">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Fecha</th>
-              <th>Obs</th>
-              <th>Cliente</th>
-              <th>Facturar A</th>
-              <th>Productos</th>
-              <th>Consignacion</th>
-              <th>Telefono</th>
-              <th>Mapa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%@carts.where(date: nil).each do |carts|%>
+    <div class="text-center m-3">
+      <select id="select4">
+        <option value="todos">Todos</option>
+        <option value="Confirmados">Confirmados</option>
+        <option value="Entregados">Entregados</option>
+        <option value="Retirados">Retirados</option>
+        <option value="Solo Barril">Solo Barril</option>
+        <option value="Maquina fija">Maquina Fija</option>
+      </select>
+    </div>
+  <div class="tab-pane fade show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg">
+        <div style="overflow-x:auto;">
+          <table class="table">
+            <thead>
               <tr>
-                <td><%= carts.id %></td>
-                <th scope="row" class="lista">
-                    <%= link_to "Editar", mostrar_path(carts) %>
-                  </th>
-                  <td><%= carts.obs %></td>
-                  <td><%= carts.cliente %></td>
-                  <td><%= carts.razon_social%></td>
-                  <td>
-                    <ul>
-                    <%carts.cart_items  .each do |items|%>
-                      <li class="lista"><%= items.quantity %> <%= items.item.description%> </li>
-                    <% end %>
-                    </ul>
-                  </td>
-                  <td>
-                    <ul>
-                    <%carts.cart_items.where(status: "consignacion").each do |items|%>
-                      <li class="lista"> <%= items.quantity %> x <%= items.item.description %></li>
-                    <% end %>
-                    </ul>
-                  </td>
-                  <td><%= carts.tel %></td>
-              <% end %>
+                <th>#</th>
+                <th>Fecha</th>
+                <th>Obs</th>
+                <th>Cliente</th>
+                <th>Facturar A</th>
+                <th>Productos</th>
+                <th>Consignacion</th>
+                <th>Telefono</th>
+                <th>Mapa</th>
               </tr>
-            <%@carts.each do |carts|%>
-              <% if carts.date != nil %>
-                <tr class=<%="#{carts.status}"%>>
-                <td><%= carts.id %></td>
+            </thead>
+            <tbody>
+              <%@carts.where(date: nil).each do |carts|%>
+                <tr>
+                  <td><%= carts.id %></td>
                   <th scope="row" class="lista">
-                      <div class="date text-center">
-                        <% if carts.date == Date.today %>
-                          <%= link_to "#{carts.date.strftime("%d/%m/%y")}", mostrar_path(carts), class: (" btn btn-danger")%>
-                        <% else %>
-                          <%= link_to "#{carts.date.strftime("%d/%m/%y")}", mostrar_path(carts)%>
-                        <% end %>
-                      </div>
+                      <%= link_to "Editar", mostrar_path(carts) %>
                     </th>
                     <td><%= carts.obs %></td>
                     <td><%= carts.cliente %></td>
                     <td><%= carts.razon_social%></td>
                     <td>
                       <ul>
-                      <%carts.cart_items.where(status: "added").each do |items|%>
+                      <%carts.cart_items  .each do |items|%>
                         <li class="lista"><%= items.quantity %> <%= items.item.description%> </li>
                       <% end %>
                       </ul>
@@ -94,22 +62,54 @@
                       </ul>
                     </td>
                     <td><%= carts.tel %></td>
-                    <td>
-                      <div class="text-center">
-                            <% if carts.show == "si" %>
-                              <%= link_to carts.show, cart_cart_mapa_no_path(carts), class: (" btn btn-success")%>
-                            <% else %>
-                              <%= link_to carts.show, cart_cart_mapa_si_path(carts), class: (" btn btn-danger")%>
-                            <% end %>
-                      </div>
-                    </td>
                 <% end %>
                 </tr>
-              <% end %>
-          </tbody>
-        </table>
+              <%@carts.each do |carts|%>
+                <% if carts.date != nil %>
+                  <tr class=<%="#{carts.status}"%>>
+                  <td><%= carts.id %></td>
+                    <th scope="row" class="lista">
+                        <div class="date text-center">
+                          <% if carts.date == Date.today %>
+                            <%= link_to "#{carts.date.strftime("%d/%m/%y")}", mostrar_path(carts), class: (" btn btn-danger")%>
+                          <% else %>
+                            <%= link_to "#{carts.date.strftime("%d/%m/%y")}", mostrar_path(carts)%>
+                          <% end %>
+                        </div>
+                      </th>
+                      <td><%= carts.obs %></td>
+                      <td><%= carts.cliente %></td>
+                      <td><%= carts.razon_social%></td>
+                      <td>
+                        <ul>
+                        <%carts.cart_items.where(status: "added").each do |items|%>
+                          <li class="lista"><%= items.quantity %> <%= items.item.description%> </li>
+                        <% end %>
+                        </ul>
+                      </td>
+                      <td>
+                        <ul>
+                        <%carts.cart_items.where(status: "consignacion").each do |items|%>
+                          <li class="lista"> <%= items.quantity %> x <%= items.item.description %></li>
+                        <% end %>
+                        </ul>
+                      </td>
+                      <td><%= carts.tel %></td>
+                      <td>
+                        <div class="text-center">
+                              <% if carts.show == "si" %>
+                                <%= link_to carts.show, cart_cart_mapa_no_path(carts), class: (" btn btn-success")%>
+                              <% else %>
+                                <%= link_to carts.show, cart_cart_mapa_si_path(carts), class: (" btn btn-danger")%>
+                              <% end %>
+                        </div>
+                      </td>
+                  <% end %>
+                  </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-</div>
-
-
+  </div>
+<% end %>
