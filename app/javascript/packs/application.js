@@ -17,6 +17,7 @@ require('flatpickr/dist/flatpickr.css')
 
 import { initSelect2 } from 'components/init_select2';
 import { initSelect3 } from 'components/init_select3';
+import { initSelect4 } from 'components/init_select4';
 import { initMap } from 'components/initMap';
 import { ubicacionRender } from 'components/ubicacion_render';
 import { estadoRender } from 'components/estado_render';
@@ -53,6 +54,7 @@ document.addEventListener('turbolinks:load', () => {
   modal();
   initSelect2();
   initSelect3();
+  initSelect4();
   initMap();
   estadoRender();
   facturaRender();

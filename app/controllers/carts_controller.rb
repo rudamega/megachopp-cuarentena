@@ -115,6 +115,6 @@ class CartsController < ApplicationController
   private
 
   def carts_params
-    params.require(:cart).permit(:date, :status, :email, :tel, :latitud, :longitud, :ruc, :cliente, :razon_social, :cliente_id, :lugar)
+    params.require(:cart).permit(:date, :status, :email, :tel, :latitud, :longitud, :ruc, :cliente, :razon_social, :cliente_id, :lugar, :obs)
   end
 end
