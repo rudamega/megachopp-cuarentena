@@ -56,7 +56,13 @@
                 <tr class=<%="#{carts.status}"%>>
                 <td><%= carts.id %></td>
                   <th scope="row" class="lista">
-                      <%= link_to "#{carts.date.strftime("%d/%m/%y")}", mostrar_path(carts) %>
+                      <div class="date text-center">
+                        <% if carts.date == Date.today %>
+                          <%= link_to "#{carts.date.strftime("%d/%m/%y")}", mostrar_path(carts), class: (" btn btn-danger")%>
+                        <% else %>
+                          <%= link_to "#{carts.date.strftime("%d/%m/%y")}", mostrar_path(carts)%>
+                        <% end %>
+                      </div>
                     </th>
                     <td><%= carts.cliente %></td>
                     <td><%= carts.razon_social%></td>
