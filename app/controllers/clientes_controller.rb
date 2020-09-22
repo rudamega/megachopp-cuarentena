@@ -24,6 +24,7 @@ class ClientesController < ApplicationController
   def create
     @cliente = Cliente.new(clientes_params)
     if @cliente.save
+      flash[:notice] = "Se ha creado un nuevo cliente"
       # body = {
       #   notification: {
       #     title: "Se ha adicionado un nuevo Cliente",
@@ -48,7 +49,7 @@ class ClientesController < ApplicationController
       #    }).execute
       redirect_to cliente_path(@cliente)
     else
-    render 'new'
+      render 'new'
     end
   end
 
