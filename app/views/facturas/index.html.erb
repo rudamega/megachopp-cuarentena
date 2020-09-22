@@ -19,19 +19,70 @@
             <%@facturas.each do |factura|%>
               <tr>
                 <td><%= factura.id %></td>
-                <td><%= factura.date.strftime("%d/%m/%y")%></td>
-                <td><%="001-003-0000#{factura.nro}"%></td>
+                <td><%= factura.date%></td>
+                <td><%= link_to "001-003-0000#{factura.nro}", factura_path(factura)%></td>
                 <td><%= factura.razon_social%></td>
-                <td><%= factura.condicion%></td>
+                  <td class=<%= factura.condicion%>><%=factura.condicion%></td>
                 <td><%= number_with_delimiter(factura.total.to_i, :delimiter => '.') %></td>
                 <td><%= number_with_delimiter(factura.pagado, :delimiter => '.') %></td>
-                <td><%= number_with_delimiter(factura.saldo, :delimiter => '.') %></td>
+                <% if factura.saldo == 0 %>
+                  <td><%= number_with_delimiter(factura.saldo, :delimiter => '.') %></td>
+                <% else %>
+                  <td class="Credito"><%= number_with_delimiter(factura.saldo, :delimiter => '.') %></td>
+                <% end %>
               <% end %>
               </tr>
           </tbody>
         </table>
 </div>
 </div>
+</div>
+
+
+
+
+
+<div class="detalle">
+
+  <div class="pedido text-center">
+    <h2>Pagos</h2>
+
+      <div class="encabezado">
+
+        </div>
+
+  </div>
+  <div class="pedido text-center">
+    <h2>Saldo a Pagar</h2>
+    <h2><%= number_with_delimiter(@factura.saldo, :delimiter => '.') %></h2>
+  </div>
+  <div>
+    <%= form_tag factura_pagar_path(@factura), method: :post do %>
+    <div class="text-center">
+    <h6><%= text_field_tag :efectivo,
+      params[:efectivo],
+      placeholder: "Efectivo"
+    %></h6>
+    <h6><%= text_field_tag :transferencia,
+      params[:transferencia],
+      placeholder: "Transferencia"
+    %></h6>
+    <h6><%= text_field_tag :cheque,
+      params[:cheque],
+      placeholder: "Cheque"
+    %></h6>
+    <h6><%= text_field_tag :giros,
+      params[:giros],
+      placeholder: "Giros"
+    %></h6>
+    <%= submit_tag "Agregar Pago", class: "btn btn-primary" %>
+  <% end %>
+  </div>
+  <div class="text-center m-3" id="factura">
+        <a class="cambiar btn btn-danger">Agregar Pago</a>
+    </div>
+
+  </div>
 </div>
 
 

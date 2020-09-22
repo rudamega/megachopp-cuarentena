@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= wicked_pdf_stylesheet_link_tag 'pdf' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <title><%= @factura.razon_social %></title>
+</head>
+<body>
+
+<div class="detalle">
+  <div class="pedido">
+    <div class="text-center">
+      <h3><strong>Grupo Rudamega SA</strong></h3>
+    </div>
+    <h5>Ruc:  80103542-2</h5>
+    <h5>Direccion: Ingavi 232, San Lorenzo</h5>
+    <h5><strong>Tel:</strong>  0994 80 80 80</h5>
+    <div class="text-center">
+      <h5><strong>TIMBRADO</strong></h5>
+    </div>
+    <h5>Numero:  80103542-2</h5>
+    <h5>Inicio Vigencia: 07/05/2020</h5>
+    <h5>Fin Vigencia: 31/05/2021</h5>
+    <div class="pedido">
+      Razon Social: <%= @factura.razon_social.upcase %> <br>
+      Documento: <%= @factura.ruc%>
+    </div>
+    <div class="pedido">
+      <div class="d-flex justify-content-between">
+       <h6>Cant </h6>
+       <h6>Descripcion </h6>
+        <h6>Precio</h6>
+        <h6>Total</h6>
+      </div>
+
+        <%@factura.cart.cart_items.where(status: "added").each do |items|%>
+        <div class="d-flex justify-content-between">
+          <div class="factura-cant">
+            <h6><%= items.quantity %></h6>
+          </div>
+          <div class="factura-detalle">
+          <h6>Munich 30 lts </h6>
+          </div>
+          <div class="factura-monto">
+          <h6><%= number_with_delimiter(items.price, :delimiter => '.')%></h6>
+          </div>
+          <div class="factura-monto">
+            <h6><%= number_with_delimiter(items.quantity.to_i * items.price, :delimiter => '.')%></h6>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</body>
+<body>
+

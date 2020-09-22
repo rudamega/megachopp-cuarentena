@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_16_162743) do
+ActiveRecord::Schema.define(version: 2020_09_21_122958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_162743) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "cart_id", null: false
-    t.string "total"
+    t.integer "total"
     t.date "date"
     t.integer "pagado"
     t.integer "saldo"
@@ -112,6 +112,19 @@ ActiveRecord::Schema.define(version: 2020_09_16_162743) do
     t.integer "stock", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mov_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "item_id", null: false
+    t.bigint "factura_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.integer "costo"
+    t.integer "precio"
+    t.index ["factura_id"], name: "index_mov_items_on_factura_id"
+    t.index ["item_id"], name: "index_mov_items_on_item_id"
   end
 
   create_table "ubicacions", force: :cascade do |t|
@@ -160,5 +173,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_162743) do
   add_foreign_key "facturas", "carts"
   add_foreign_key "facturas", "clientes"
   add_foreign_key "facturas", "users"
+  add_foreign_key "mov_items", "facturas"
+  add_foreign_key "mov_items", "items"
   add_foreign_key "ubicacions", "clientes"
 end

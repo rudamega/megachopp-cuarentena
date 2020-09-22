@@ -1,0 +1,34 @@
+
+<div class="tab-pane fade show container" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg">
+      <div style="overflow-x:auto;">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio de costo</th>
+              <th scope="col">Precio de Venta</th>
+              <th scope="col">Lucro</th>
+              <th scope="col">Saldo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%@mov.each do |mov|%>
+              <tr>
+                <td><%= mov.id %></td>
+                <td><%= mov.item.name%></td>
+                <td><%= mov.status%></td>
+                <td><%= mov.quantity%></td>
+                <td><%= number_with_delimiter(mov.costo, :delimiter => '.') %></td>
+                <td><%= number_with_delimiter(mov.precio, :delimiter => '.') %></td>
+                <td><%= number_with_delimiter(mov.precio - mov.costo, :delimiter => '.') %></td>
+              <% end %>
+              </tr>
+          </tbody>
+        </table>
+</div>
+</div>
+</div>

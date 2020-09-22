@@ -5,13 +5,26 @@
 
 .pedido {
   border: 1px solid black;
-  padding: 10px;
   margin: 10px;
 }
 .encabezado {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.factura-cant {
+  width: 30px;
+  height: 30px;
+}
+
+.factura-detalle {
+  width: 90px;
+
+}
+
+.factura-monto {
+  width: 90px;
 }
 
 @media only screen and (max-width: 768px) {
