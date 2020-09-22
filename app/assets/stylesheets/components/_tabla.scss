@@ -23,5 +23,20 @@
 }
 .anulado {
   background: red;
-
+}
+.Contado {
+  background: blue;
+  margin: 2px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+}
+.Credito {
+  background: red;
+  margin: 2px;
+  justify-content: center;
+  color: white;
+  display: flex;
+  border-radius: 10px;
 }

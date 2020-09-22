@@ -1,4 +1,16 @@
- <div class="detalle">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= wicked_pdf_stylesheet_link_tag 'pdf' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <title><%= @factura.razon_social %></title>
+</head>
+<body>
+
+<div class="detalle">
   <div class="pedido">
     <div class="text-center">
       <h3><strong>Grupo Rudamega SA</strong></h3>
@@ -43,8 +55,6 @@
     </div>
   </div>
 </div>
-
-
-
-
+</body>
+<body>
 

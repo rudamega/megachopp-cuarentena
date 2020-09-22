@@ -9,8 +9,15 @@ Rails.application.routes.draw do
     resources :ubicacions, only: [:index, :create]
   end
   resources :ubicacions, only: [:edit, :update]
+
+  resources :mov_items, only: [:index, :new, :create]
+
   get 'crear_factura', to: 'facturas#crear_factura'
-  resources :facturas, only:[:index]
+
+  resources :facturas, only:[:index, :show] do
+    post 'pagar', to: 'facturas#pago'
+  end
+
   resources :carts do
     get 'cambiar', to: 'carts#cambiar'
     resources :facturas, only:[:new, :create]
