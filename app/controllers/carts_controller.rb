@@ -101,30 +101,30 @@ class CartsController < ApplicationController
   def update
     @cart = Cart.find(params[:id])
     if @cart.update(carts_params)
-      # body = {
-      #   notification: {
-      #     title: "Nuevo pedido para #{@cart.cliente}",
-      #     body: "Fecha: #{@cart.date}"
-      #   },
-      #   priority: "high",
-      #   data: {
-      #     click_action: "FLUTTER_NOTIFICATION_CLICK",
-      #     id: "1",
-      #     status: "done",
-      #     nombre: @cart.cliente,
-      #     cliente: @cart.cliente,
-      #     fecha: @cart.date
-      #   },
-      #   to:
-      #   "eswcJYcCSbSt8A_0ptsBH4:APA91bEeL4UDj4Wd8yN3httSm9Tjw1obejoR7RReNL_thYD5GqEbg2XFyHXH1d_PlgCZdjBE6wYGSo8zZNW17MU__I5LRUSqRm2ILWtuvw5e41oDfW7iMsT1HFdHEJxtnsac6WgE6NGW"
-      # }
+      body = {
+        notification: {
+          title: "Nuevo pedido para #{@cart.cliente}",
+          body: "Fecha: #{@cart.date}"
+        },
+        priority: "high",
+        data: {
+          click_action: "FLUTTER_NOTIFICATION_CLICK",
+          id: "1",
+          status: "done",
+          nombre: @cart.cliente,
+          cliente: @cart.cliente,
+          fecha: @cart.date
+        },
+        to:
+        "eswcJYcCSbSt8A_0ptsBH4:APA91bEeL4UDj4Wd8yN3httSm9Tjw1obejoR7RReNL_thYD5GqEbg2XFyHXH1d_PlgCZdjBE6wYGSo8zZNW17MU__I5LRUSqRm2ILWtuvw5e41oDfW7iMsT1HFdHEJxtnsac6WgE6NGW"
+      }
 
-      # response = RestClient::Request.new({
-      #   method: :post,
-      #   url: "https://fcm.googleapis.com/fcm/send",
-      #   payload: body.to_json,
-      #   headers: {content_type: 'application/json', Authorization: "key=#{ENV['FIREBASE']}"}
-      #    }).execute
+      response = RestClient::Request.new({
+        method: :post,
+        url: "https://fcm.googleapis.com/fcm/send",
+        payload: body.to_json,
+        headers: {content_type: 'application/json', Authorization: "key=#{ENV['FIREBASE']}"}
+         }).execute
       # if @cart.email != ""
       # mail = UserMailer.with(cart: @cart).confirmado
       # mail.deliver_later

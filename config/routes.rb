@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :items
   get 'cart_mostrar/:id', to: 'carts#mostrar', as: :mostrar
 
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.rol == "admin" } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   resources :clientes do
     resources :ubicacions, only: [:index, :create]
   end
