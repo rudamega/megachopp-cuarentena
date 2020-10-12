@@ -1,64 +1,49 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    #
-    <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="/">
+   <%= image_tag "logo.png", class: "avatar" %>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "PEDIDOS", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "CERVECERA", "#", class: "nav-link" %>
-        </li>
-        </li>
-        <li class="nav-item dropdown">
-        <%= image_tag "logo.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <% if current_user.rol == "admin" || current_user.rol == "vendedor"%>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <% if current_user.nil? %>
+          <a class="nav-link" href="/users/sign_in">Ingresar</a>
+        <% end %>
+      </li>
+      <% if !current_user.nil?  %>
+        <% if current_user.rol == "admin" || current_user.rol == "vendedor"%>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Acciones
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <%= link_to new_cliente_path, class: "dropdown-item" do%>
                 NUEVO CLIENTES
               <% end %>
-            <% end %>
-            <% if current_user.rol == "admin" || current_user.rol == "vendedor"%>
               <%= link_to clientes_path, class: "dropdown-item" do%>
-                CLIENTES
-              <% end %>
-            <% end %>
-            <% if current_user.rol == "admin" || current_user.rol == "vendedor"%>
+                  CLIENTES
+                <% end %>
               <%= link_to carts_path, class: "dropdown-item", method: :post do%>
                 CARGAR PEDIDO
               <% end %>
-            <% end %>
-            <% if current_user.rol == "admin" || current_user.rol == "vendedor"%>
               <%= link_to facturas_path, class: "dropdown-item" do%>
                 POS
               <% end %>
-            <% end %>
-            <% if current_user.rol == "admin" || current_user.rol == "vendedor"%>
               <%= link_to carts_path, class: "dropdown-item" do %>
                   Lista de pedidos
               <% end %>
-            <% end %>
-            <% if current_user.rol == "admin" || current_user.rol == "funcionario"%>
-            <%= link_to "PEDIDOS", "#", class: "dropdown-item" %>
-            <% end %>
-            <%= link_to "Productos", "#", class: "dropdown-item" %>
-            <%= link_to "Mapa", cart_mapa_path, class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
+              <%= link_to "Productos", "#", class: "dropdown-item" %>
+              <%= link_to "Mapa", cart_mapa_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+        <% end %>
       <% end %>
     </ul>
   </div>
-</div>
+</nav>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :items
   get 'cart_mostrar/:id', to: 'carts#mostrar', as: :mostrar
+  get 'home', :to => redirect('/index.html')
 
   require "sidekiq/web"
   authenticate :user, ->(user) { user.rol == "admin" } do

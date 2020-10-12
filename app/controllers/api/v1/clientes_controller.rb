@@ -3,7 +3,12 @@ class Api::V1::ClientesController < Api::V1::BaseController
   before_action :set_cliente, only: [:show]
 
   def index
-    @clientes = policy_scope(Cliente)
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR razon_social ILIKE :query"
+      @clientes = policy_scope(Cliente).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @clientes = policy_scope(Cliente).order(id: :desc).limit(50)
+    end
   end
 
   def show
