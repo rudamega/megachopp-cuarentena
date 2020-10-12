@@ -1,3 +1,5 @@
+require 'rest-client'
+require 'json'
 class CartsController < ApplicationController
   def index
     if params[:query].present?
@@ -101,25 +103,100 @@ class CartsController < ApplicationController
   def update
     @cart = Cart.find(params[:id])
     if @cart.update(carts_params)
-      body = {
-        notification: {
-          title: "Nuevo pedido para #{@cart.cliente}",
-          body: "Fecha: #{@cart.date}"
-        },
-        priority: "high",
-        data: {
-          click_action: "FLUTTER_NOTIFICATION_CLICK",
-          id: "1",
-          status: "done",
-          nombre: @cart.cliente,
-          cliente: @cart.cliente,
-          fecha: @cart.date
-        },
-        to:
-        "eswcJYcCSbSt8A_0ptsBH4:APA91bEeL4UDj4Wd8yN3httSm9Tjw1obejoR7RReNL_thYD5GqEbg2XFyHXH1d_PlgCZdjBE6wYGSo8zZNW17MU__I5LRUSqRm2ILWtuvw5e41oDfW7iMsT1HFdHEJxtnsac6WgE6NGW"
-      }
+      if @cart.status == "entregado"
+        body = {
+          notification: {
+            title: "Se ha entregado el pedido de #{@cart.cliente}",
+            body: "Fecha: #{@cart.date}"
+          },
+          priority: "high",
+          data: {
+            click_action: "FLUTTER_NOTIFICATION_CLICK",
+            id: "1",
+            status: "done",
+            nombre: @cart.cliente,
+            cliente: @cart.cliente,
+            fecha: @cart.date
+          },
+          to:
+          "eswcJYcCSbSt8A_0ptsBH4:APA91bEeL4UDj4Wd8yN3httSm9Tjw1obejoR7RReNL_thYD5GqEbg2XFyHXH1d_PlgCZdjBE6wYGSo8zZNW17MU__I5LRUSqRm2ILWtuvw5e41oDfW7iMsT1HFdHEJxtnsac6WgE6NGW"
+        }
+      elsif @cart.status == "retirado"
+        body = {
+          notification: {
+            title: "Se ha reitrado el pedido de #{@cart.cliente}",
+            body: "Fecha: #{@cart.date}"
+          },
+          priority: "high",
+          data: {
+            click_action: "FLUTTER_NOTIFICATION_CLICK",
+            id: "1",
+            status: "done",
+            nombre: @cart.cliente,
+            cliente: @cart.cliente,
+            fecha: @cart.date
+          },
+          to:
+          "eswcJYcCSbSt8A_0ptsBH4:APA91bEeL4UDj4Wd8yN3httSm9Tjw1obejoR7RReNL_thYD5GqEbg2XFyHXH1d_PlgCZdjBE6wYGSo8zZNW17MU__I5LRUSqRm2ILWtuvw5e41oDfW7iMsT1HFdHEJxtnsac6WgE6NGW"
+        }
+      elsif @cart.status == "confirmado"
+        body = {
+          notification: {
+            title: "Nuevo pedido para #{@cart.cliente}",
+            body: "Fecha: #{@cart.date}"
+          },
+          priority: "high",
+          data: {
+            click_action: "FLUTTER_NOTIFICATION_CLICK",
+            id: "1",
+            status: "done",
+            nombre: @cart.cliente,
+            cliente: @cart.cliente,
+            fecha: @cart.date
+          },
+          to:
+          "eswcJYcCSbSt8A_0ptsBH4:APA91bEeL4UDj4Wd8yN3httSm9Tjw1obejoR7RReNL_thYD5GqEbg2XFyHXH1d_PlgCZdjBE6wYGSo8zZNW17MU__I5LRUSqRm2ILWtuvw5e41oDfW7iMsT1HFdHEJxtnsac6WgE6NGW"
+        }
 
-      response = RestClient::Request.new({
+      elsif @cart.status == "solo-barril"
+        body = {
+          notification: {
+            title: "Solo barril para #{@cart.cliente}",
+            body: "Fecha: #{@cart.date}"
+          },
+          priority: "high",
+          data: {
+            click_action: "FLUTTER_NOTIFICATION_CLICK",
+            id: "1",
+            status: "done",
+            nombre: @cart.cliente,
+            cliente: @cart.cliente,
+            fecha: @cart.date
+          },
+          to:
+          "eswcJYcCSbSt8A_0ptsBH4:APA91bEeL4UDj4Wd8yN3httSm9Tjw1obejoR7RReNL_thYD5GqEbg2XFyHXH1d_PlgCZdjBE6wYGSo8zZNW17MU__I5LRUSqRm2ILWtuvw5e41oDfW7iMsT1HFdHEJxtnsac6WgE6NGW"
+        }
+      else
+        body = {
+          notification: {
+            title: "Maquina fija para #{@cart.cliente}",
+            body: "Fecha: #{@cart.date}"
+          },
+          priority: "high",
+          data: {
+            click_action: "FLUTTER_NOTIFICATION_CLICK",
+            id: "1",
+            status: "done",
+            nombre: @cart.cliente,
+            cliente: @cart.cliente,
+            fecha: @cart.date
+          },
+          to:
+          "eswcJYcCSbSt8A_0ptsBH4:APA91bEeL4UDj4Wd8yN3httSm9Tjw1obejoR7RReNL_thYD5GqEbg2XFyHXH1d_PlgCZdjBE6wYGSo8zZNW17MU__I5LRUSqRm2ILWtuvw5e41oDfW7iMsT1HFdHEJxtnsac6WgE6NGW"
+        }
+      end
+
+      RestClient::Request.new({
         method: :post,
         url: "https://fcm.googleapis.com/fcm/send",
         payload: body.to_json,
