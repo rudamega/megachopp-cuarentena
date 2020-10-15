@@ -12,6 +12,8 @@
       <%= f.input :date, start_year: Time.now.year - 100,
         end_year: Time.now.year - 18,
         order: %i(day month year), label: "Fecha de nacimiento", required: true%>
+      <%= f.input :name2, label: "En caso de no contactar", required: true%>
+      <%= f.input :tel2, label: "Tel 2 ", required: true%>
     </div>
     <div class="form-actions text-center">
       <%= f.button :submit, "Actualizar", class: "btn btn-primary" %>
