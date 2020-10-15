@@ -10,15 +10,14 @@
 
     <div class="form-inputs">
 
-      <%= f.input :first_name, label: "Nombre y Apellido", required: true%>
-      <%= f.input :ruc, label: "Ci o Ruc", required: true%>
-      <%= f.input :phone_number, label: "Nro de telefono", required: true%>
-      <%= f.input :data, label: "Año de nacimiento", as: :date,end_year: Date.today.year - 10,
-       start_year: Date.today.year - 60%>
       <%= f.input :email, label:" Correo",
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
+      <%= f.input :first_name, label: "Nombre y Apellido", required: true%>
+      <%= f.input :phone_number, label: "Nro de telefono", required: true%>
+      <%= f.input :data, label: "Año de nacimiento", as: :date,end_year: Date.today.year - 10,
+       start_year: Date.today.year - 60%>
       <%= f.input :password, label: "Contraseña",
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
