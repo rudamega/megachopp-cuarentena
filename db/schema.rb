@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_21_122958) do
+ActiveRecord::Schema.define(version: 2020_10_15_110210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_09_21_122958) do
     t.string "zona"
     t.string "show", default: "no"
     t.bigint "cliente_id"
+    t.string "cliente2"
+    t.string "tel2"
     t.index ["cliente_id"], name: "index_carts_on_cliente_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
@@ -82,6 +84,8 @@ ActiveRecord::Schema.define(version: 2020_09_21_122958) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "ruc"
     t.date "date"
+    t.string "name2"
+    t.string "tel2"
   end
 
   create_table "facturas", force: :cascade do |t|
