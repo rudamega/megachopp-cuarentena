@@ -8,13 +8,14 @@
       console.log("Confirmado funcionando")
       lista.forEach((list) => {
         if (list['latitud'] != null && list['longitud'] != null ) {
+          const id = (list['id'])
           const lati = Number(list['latitud'])
           const longi = Number(list['longitud'])
           const cliente = list['cliente']
           const razon = list['razon_social']
           const link = list['lugar']
           const date = list['date']
-          latLng.push([{lat: lati, lng: longi}, "blue", cliente, link, razon, date ]);
+          latLng.push([{lat: lati, lng: longi}, "blue", cliente, link, razon, date, id ]);
         };
       });
 
@@ -31,7 +32,11 @@
         `<h6>Cliente: ${location[2]}</h6>`+
          `<h6>Ruc: ${location[4]}</h6>`+
          `<a href="${location[3]} "target="_blank">` +
-         "Ir a la Ubi</a>";
+         "Ir a la Ubi</a>" +
+         "<br>" +
+         "<br>" +
+         `<a href="http://megachopp.com.py/cart_mostrar/${location[6]} "target="_blank">` +
+         "Ver pedido</a>";
 
         const infowindow = new google.maps.InfoWindow({
           content: contentString
@@ -53,13 +58,14 @@
       console.log("Entregado funcionando")
       lista.forEach((list) => {
         if (list['latitud'] != null && list['longitud'] != null ) {
+          const id = (list['id'])
           const lati = Number(list['latitud'])
           const longi = Number(list['longitud'])
           const cliente = list['cliente']
           const razon = list['razon_social']
           const link = list['lugar']
           const date = list['date']
-          latLng1.push([{lat: lati, lng: longi}, "green", cliente, link, razon, date])
+          latLng1.push([{lat: lati, lng: longi}, "green", cliente, link, razon, date, id])
           // addMarker({lat: lati, lng: longi}, "green");
 
         };
@@ -78,7 +84,11 @@
         `<h6>Cliente: ${location[2]}</h6>`+
          `<h6>Ruc: ${location[4]}</h6>`+
          `<a href="${location[3]} "target="_blank">` +
-         "Ir a la Ubi</a>";
+         "Ir a la Ubi</a>" +
+         `<a href="http://megachopp.com.py/cart_mostrar/${location[6]} "target="_blank">` +
+         "<br>" +
+         "<br>" +
+         "Ver pedido</a>";
 
         const infowindow = new google.maps.InfoWindow({
           content: contentString
