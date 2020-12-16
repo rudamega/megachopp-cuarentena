@@ -94,12 +94,12 @@ ActiveRecord::Schema.define(version: 2020_10_15_110210) do
     t.string "ruc"
     t.string "email"
     t.string "condicion"
+    t.integer "total"
     t.bigint "user_id", null: false
     t.bigint "cliente_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "cart_id", null: false
-    t.integer "total"
     t.date "date"
     t.integer "pagado"
     t.integer "saldo"
