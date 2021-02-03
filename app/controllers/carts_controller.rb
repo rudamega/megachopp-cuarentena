@@ -1,5 +1,6 @@
 require 'rest-client'
 require 'json'
+
 class CartsController < ApplicationController
   def index
     if params[:query].present?
@@ -92,7 +93,7 @@ class CartsController < ApplicationController
       redirect_to edit_cart_path(@cart)
       return
     end
-    redirect_to pages_path
+    redirect_to carts_path
   end
 
   def edit
@@ -158,6 +159,13 @@ class CartsController < ApplicationController
           "eswcJYcCSbSt8A_0ptsBH4:APA91bEeL4UDj4Wd8yN3httSm9Tjw1obejoR7RReNL_thYD5GqEbg2XFyHXH1d_PlgCZdjBE6wYGSo8zZNW17MU__I5LRUSqRm2ILWtuvw5e41oDfW7iMsT1HFdHEJxtnsac6WgE6NGW"
         }
 
+        bodys = {
+          json: {
+            nombre: @cart.razon_social,
+            documento: @cart.ruc
+          }
+        }
+        RestClient.post 'https://contalapp.com/cliente-rudamega/registrar.php', {nombre: @cart.razon_social, documento: @cart.ruc}
       elsif @cart.status == "solo-barril"
         body = {
           notification: {
@@ -198,9 +206,10 @@ class CartsController < ApplicationController
 
       RestClient::Request.new({
         method: :post,
-        url: "https://fcm.googleapis.com/fcm/send",
-        payload: body.to_json,
-        headers: {content_type: 'application/json', Authorization: "key=#{ENV['FIREBASE']}"}
+        url: "https://contalapp.com/cliente-rudamega/registrar.php",
+        # url: "https://fcm.googleapis.com/fcm/send",
+        payload: bodys.to_json,
+        headers: {content_type: 'application/json'}
          }).execute
       # if @cart.email != ""
       # mail = UserMailer.with(cart: @cart).confirmado

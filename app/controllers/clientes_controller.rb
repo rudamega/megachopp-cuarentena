@@ -23,6 +23,7 @@ class ClientesController < ApplicationController
     if @cliente.save
       flash[:notice] = "Se ha creado un nuevo cliente"
       NotificationJob.perform_later(@cliente.id)
+      RestClient.post 'https://contalapp.com/cliente-rudamega/registrar.php', {nombre: @cliente.razon_social, documento: @cliente.ruc}
       redirect_to cliente_path(@cliente)
     else
       render 'new'
