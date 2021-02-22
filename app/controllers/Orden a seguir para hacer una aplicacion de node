@@ -1,0 +1,13 @@
+Orden a seguir para hacer una aplicacion de node
+
+
+npm init -y
+
+crear .gitignore (colocar modules ahi adentro)
+
+tema id uuid
+
+
+http axios
+
+instalar .env y colocar en gitignore
