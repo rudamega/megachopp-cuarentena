@@ -1,0 +1,11 @@
+safkk
+
+
+instalar siemore dotenv ( oara usar hay que meterle re  quiere
+) process.env.port
+
+crear siempre gitignore y poner adentro node_modules/
+
+
+
+para serializar a json los post recibidos bodyparser
