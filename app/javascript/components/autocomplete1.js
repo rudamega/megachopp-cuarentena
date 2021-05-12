@@ -3,7 +3,7 @@ const autocomplete1 = () => {
 if (document.getElementById('select3')) {
 const id = document.getElementById('select3').value;
 if (id != "") {
-fetch(`http://megachopp.com.py/api/v1/ubicacions/${id}`)
+fetch(`https://megachopp1.herokuapp.com/api/v1/ubicacions/${id}`)
   .then(response => response.json())
   .then((data) => {
     // lugar == link para google maps
