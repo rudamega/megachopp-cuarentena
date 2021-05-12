@@ -1,7 +1,7 @@
 
   const confirmado = (map) => {
     let latLng = [];
-    fetch(`http://64.227.10.250/api/v1/cart_confirmado`)
+    fetch(`https://megachopp1.herokuapp.com/api/v1/cart_confirmado`)
     .then(response => response.json())
     .then((data) => {
       const lista = data;
@@ -35,7 +35,7 @@
          "Ir a la Ubi</a>" +
          "<br>" +
          "<br>" +
-         `<a href="http://64.227.10.250/cart_mostrar/${location[6]} "target="_blank">` +
+         `<a href="https://megachopp1.herokuapp.com/cart_mostrar/${location[6]} "target="_blank">` +
          "Ver pedido</a>";
 
         const infowindow = new google.maps.InfoWindow({
@@ -51,7 +51,7 @@
 
   const entregado = (map) => {
     let latLng1 = [];
-    fetch(`http://64.227.10.250/api/v1/cart_entregado`)
+    fetch(`https://megachopp1.herokuapp.com/api/v1/cart_entregado`)
     .then(response => response.json())
     .then((data) => {
       const lista = data;
@@ -85,7 +85,7 @@
          `<h6>Ruc: ${location[4]}</h6>`+
          `<a href="${location[3]} "target="_blank">` +
          "Ir a la Ubi</a>" +
-         `<a href="http://64.227.10.250/cart_mostrar/${location[6]} "target="_blank">` +
+         `<a href="https://megachopp1.herokuapp.com/cart_mostrar/${location[6]} "target="_blank">` +
          "<br>" +
          "<br>" +
          "Ver pedido</a>";
