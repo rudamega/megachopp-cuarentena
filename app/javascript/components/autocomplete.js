@@ -19,7 +19,7 @@ const autocomplete = () => {
 if (document.getElementById('select2')) {
 const id = document.getElementById('select2').value;
 if (id != "") {
-fetch(`http://megachopp.com.py/api/v1/clientes/${id}`)
+fetch(`https://megachopp1.herokuapp.com/api/v1/clientes/${id}`)
   .then(response => response.json())
   .then((data) => {
     const cliente = document.getElementById('cliente');
