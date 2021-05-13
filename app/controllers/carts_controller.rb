@@ -165,7 +165,7 @@ class CartsController < ApplicationController
             documento: @cart.ruc
           }
         }
-        RestClient.post 'https://contalapp.com/cliente-rudamega/registrar.php', {nombre: @cart.razon_social, documento: @cart.ruc}
+        RestClient.post 'http://68.183.140.187/cliente-rudamega/registrar.php', {nombre: @cart.razon_social, documento: @cart.ruc}
       elsif @cart.status == "solo-barril"
         body = {
           notification: {
@@ -206,7 +206,7 @@ class CartsController < ApplicationController
 
       RestClient::Request.new({
         method: :post,
-        url: "https://contalapp.com/cliente-rudamega/registrar.php",
+        url: "http://68.183.140.187/cliente-rudamega/registrar.php",
         # url: "https://fcm.googleapis.com/fcm/send",
         payload: bodys.to_json,
         headers: {content_type: 'application/json'}
