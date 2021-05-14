@@ -165,7 +165,7 @@ class CartsController < ApplicationController
             documento: @cart.ruc
           }
         }
-        RestClient.post 'http://68.183.140.187/cliente-rudamega/registrar.php', {nombre: @cart.razon_social, documento: @cart.ruc}
+        # RestClient.post 'http://68.183.140.187/cliente-rudamega/registrar.php', {nombre: @cart.razon_social, documento: @cart.ruc}
       elsif @cart.status == "solo-barril"
         body = {
           notification: {
@@ -204,13 +204,13 @@ class CartsController < ApplicationController
         }
       end
 
-      RestClient::Request.new({
-        method: :post,
-        url: "http://68.183.140.187/cliente-rudamega/registrar.php",
-        # url: "https://fcm.googleapis.com/fcm/send",
-        payload: bodys.to_json,
-        headers: {content_type: 'application/json'}
-         }).execute
+      # RestClient::Request.new({
+      #   method: :post,
+      #   url: "http://68.183.140.187/cliente-rudamega/registrar.php",
+      #   # url: "https://fcm.googleapis.com/fcm/send",
+      #   payload: bodys.to_json,
+      #   headers: {content_type: 'application/json'}
+      #    }).execute
       # if @cart.email != ""
       # mail = UserMailer.with(cart: @cart).confirmado
       # mail.deliver_later
