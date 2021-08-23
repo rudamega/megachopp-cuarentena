@@ -7,7 +7,7 @@ class CartsController < ApplicationController
       sql_query = "cliente ILIKE :query OR razon_social ILIKE :query"
       @carts = Cart.where(sql_query, query: "%#{params[:query]}%")
     else
-      @carts = Cart.all.order(date: :desc)
+      @carts = Cart.all.order(date: :desc).last(100)
       respond_to do |format|
         format.html
         format.pdf do
