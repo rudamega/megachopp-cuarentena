@@ -21,35 +21,68 @@
       </select>
     </div>
   <div class="tab-pane fade show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg">
-        <div style="overflow-x:auto;">
-          <table class="table">
-            <thead>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg">
+      <div style="overflow-x:auto;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Fecha</th>
+              <th>Cliente</th>
+              <th>Obs</th>
+              <th>Facturar A</th>
+              <th>Productos</th>
+              <th>Consignacion</th>
+              <th>Telefono</th>
+              <th>Mapa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%@carts.where(date: nil).each do |carts|%>
               <tr>
-                <th>#</th>
-                <th>Fecha</th>
-                <th>Cliente</th>
-                <th>Obs</th>
-                <th>Facturar A</th>
-                <th>Productos</th>
-                <th>Consignacion</th>
-                <th>Telefono</th>
-                <th>Mapa</th>
+                <td><%= carts.id %></td>
+                <th scope="row" class="lista">
+                    <%= link_to "Editar", mostrar_path(carts) %>
+                  </th>
+                  <td><%= carts.cliente %></td>
+                  <td><%= carts.obs %></td>
+                  <td><%= carts.razon_social%></td>
+                  <td>
+                    <ul>
+                    <%carts.cart_items.each do |items|%>
+                      <li class="lista"><%= items.quantity %> <%= items.item.description%> </li>
+                    <% end %>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                    <%carts.cart_items.where(status: "consignacion").each do |items|%>
+                      <li class="lista"> <%= items.quantity %> x <%= items.item.description %></li>
+                    <% end %>
+                    </ul>
+                  </td>
+                  <td><%= carts.tel %></td>
+              <% end %>
               </tr>
-            </thead>
-            <tbody>
-              <%@carts.where(date: nil).each do |carts|%>
-                <tr>
-                  <td><%= carts.id %></td>
+            <%@carts.last(50).each do |carts|%>
+              <% if carts.date != nil %>
+                <tr class=<%="#{carts.status}"%>>
+                <td><%= carts.id %></td>
                   <th scope="row" class="lista">
-                      <%= link_to "Editar", mostrar_path(carts) %>
+                      <div class="date text-center">
+                        <% if carts.date == Date.today %>
+                          <%= link_to "#{carts.date.strftime("%d/%m/%y")}", mostrar_path(carts), class: (" btn btn-danger")%>
+                        <% else %>
+                          <%= link_to "#{carts.date.strftime("%d/%m/%y")}", mostrar_path(carts)%>
+                        <% end %>
+                      </div>
                     </th>
                     <td><%= carts.cliente %></td>
                     <td><%= carts.obs %></td>
                     <td><%= carts.razon_social%></td>
                     <td>
                       <ul>
-                      <%carts.cart_items.each do |items|%>
+                      <%carts.cart_items.where(status: "added").each do |items|%>
                         <li class="lista"><%= items.quantity %> <%= items.item.description%> </li>
                       <% end %>
                       </ul>
@@ -62,52 +95,19 @@
                       </ul>
                     </td>
                     <td><%= carts.tel %></td>
+                    <td>
+                      <div class="text-center">
+                            <% if carts.show == "si" %>
+                              <%= link_to carts.show, cart_cart_mapa_no_path(carts), class: (" btn btn-success")%>
+                            <% else %>
+                              <%= link_to carts.show, cart_cart_mapa_si_path(carts), class: (" btn btn-danger")%>
+                            <% end %>
+                      </div>
+                    </td>
                 <% end %>
                 </tr>
-              <%@carts.each do |carts|%>
-                <% if carts.date != nil %>
-                  <tr class=<%="#{carts.status}"%>>
-                  <td><%= carts.id %></td>
-                    <th scope="row" class="lista">
-                        <div class="date text-center">
-                          <% if carts.date == Date.today %>
-                            <%= link_to "#{carts.date.strftime("%d/%m/%y")}", mostrar_path(carts), class: (" btn btn-danger")%>
-                          <% else %>
-                            <%= link_to "#{carts.date.strftime("%d/%m/%y")}", mostrar_path(carts)%>
-                          <% end %>
-                        </div>
-                      </th>
-                      <td><%= carts.cliente %></td>
-                      <td><%= carts.obs %></td>
-                      <td><%= carts.razon_social%></td>
-                      <td>
-                        <ul>
-                        <%carts.cart_items.where(status: "added").each do |items|%>
-                          <li class="lista"><%= items.quantity %> <%= items.item.description%> </li>
-                        <% end %>
-                        </ul>
-                      </td>
-                      <td>
-                        <ul>
-                        <%carts.cart_items.where(status: "consignacion").each do |items|%>
-                          <li class="lista"> <%= items.quantity %> x <%= items.item.description %></li>
-                        <% end %>
-                        </ul>
-                      </td>
-                      <td><%= carts.tel %></td>
-                      <td>
-                        <div class="text-center">
-                              <% if carts.show == "si" %>
-                                <%= link_to carts.show, cart_cart_mapa_no_path(carts), class: (" btn btn-success")%>
-                              <% else %>
-                                <%= link_to carts.show, cart_cart_mapa_si_path(carts), class: (" btn btn-danger")%>
-                              <% end %>
-                        </div>
-                      </td>
-                  <% end %>
-                  </tr>
-                <% end %>
-            </tbody>
+              <% end %>
+          </tbody>
           </table>
         </div>
       </div>
