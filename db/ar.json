@@ -1,0 +1,144 @@
+{
+    "jsonrpc": "2.0",
+    "id": null,
+    "result": [
+        {
+            "incoming_qty": 0.0,
+            "standard_price": 7.38,
+            "write_uid": [
+                1,
+                "Administrator"
+            ],
+            "display_name": "Bermuda/H Jeans WACKY 320 blcll/xadres.",
+            "item_ids": [],
+            "route_from_categ_ids": [],
+            "company_id": [
+                1,
+                "Casa Aries S.R.L"
+            ],
+            "interfaces_defaultcode": false,
+            "property_valuation": false,
+            "track_service": "manual",
+            "pricelist_id": false,
+            "property_stock_account_input": false,
+            "warehouse_id": false,
+            "route_ids": [
+                5
+            ],
+            "purchase_line_warn": "no-message",
+            "rental": false,
+            "image_medium": false,
+            "name": "Bermuda/H Jeans WACKY 320 blcll/xadres.",
+            "packaging_ids": [],
+            "pos_categ_id": false,
+            "property_account_expense_id": false,
+            "seller_ids": [],
+            "message_follower_ids": [],
+            "outgoing_qty": 0.0,
+            "create_date": "2018-04-09 19:55:29",
+            "weight": 0.0,
+            "sequence": 1,
+            "message_needaction": false,
+            "attribute_line_ids": [],
+            "currency_id": [
+                3,
+                "USD"
+            ],
+            "description_purchase": false,
+            "virtual_available": 0.0,
+            "description_picking": false,
+            "message_unread_counter": 0,
+            "barcode": "29463",
+            "to_weight": false,
+            "active": true,
+            "product_variant_count": 1,
+            "property_stock_account_output": false,
+            "lst_price": 17.0,
+            "reordering_min_qty": 0.0,
+            "message_unread": false,
+            "message_needaction_counter": 0,
+            "warranty": 0.0,
+            "property_stock_procurement": [
+                6,
+                "Virtual Locations/Procurements"
+            ],
+            "list_price": 17.0,
+            "color": 0,
+            "purchase_line_warn_msg": false,
+            "image": false,
+            "sale_line_warn_msg": false,
+            "qty_available": 0.0,
+            "create_uid": [
+                1,
+                "Administrator"
+            ],
+            "sale_ok": true,
+            "message_is_follower": false,
+            "__last_update": "2018-04-09 19:55:29",
+            "purchase_method": "receive",
+            "purchase_ok": true,
+            "message_last_post": false,
+            "property_cost_method": false,
+            "type": "product",
+            "property_stock_production": [
+                7,
+                "Virtual Locations/Production"
+            ],
+            "supplier_taxes_id": [
+                2
+            ],
+            "volume": 0.0,
+            "property_stock_inventory": [
+                5,
+                "Virtual Locations/Inventory adjustment"
+            ],
+            "cost_method": "average",
+            "valuation": "manual_periodic",
+            "sale_delay": 0.0,
+            "product_variant_ids": [
+                13727
+            ],
+            "description_sale": "Bermuda/H Jeans WACKY 320 blcll/xadres.",
+            "available_in_pos": true,
+            "image_small": false,
+            "sales_count": 0,
+            "sale_line_warn": "no-message",
+            "nbr_reordering_rules": 0,
+            "message_channel_ids": [],
+            "message_partner_ids": [],
+            "uom_id": [
+                1,
+                "Unit(s)"
+            ],
+            "default_code": false,
+            "location_id": false,
+            "id": 13727,
+            "message_ids": [],
+            "uom_po_id": [
+                1,
+                "Unit(s)"
+            ],
+            "property_account_income_id": false,
+            "description": false,
+            "price": 0.0,
+            "write_date": "2018-04-09 19:55:29",
+            "categ_id": [
+                1,
+                "All"
+            ],
+            "purchase_count": 0,
+            "tracking": "none",
+            "property_account_creditor_price_difference": false,
+            "reordering_max_qty": 0.0,
+            "invoice_policy": "order",
+            "taxes_id": [
+                1
+            ],
+            "expense_policy": "no",
+            "product_variant_id": [
+                13727,
+                "Bermuda/H Jeans WACKY 320 blcll/xadres."
+            ]
+        }
+    ]
+}
