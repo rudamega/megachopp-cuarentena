@@ -64,7 +64,7 @@
                   <td><%= carts.tel %></td>
               <% end %>
               </tr>
-            <%@carts.limit(100).each do |carts|%>
+            <%@carts.limit(70).each do |carts|%>
               <% if carts.date != nil %>
                 <tr class=<%="#{carts.status}"%>>
                 <td><%= carts.id %></td>
